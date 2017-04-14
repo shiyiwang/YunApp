@@ -7,7 +7,8 @@ import {
   View,
   Image,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  RefreshControl
 } from 'react-native';
 
 //轮播图
@@ -22,13 +23,25 @@ class HomeComponent extends Component {
       super(props)
       this.state = {
         swiperData: [],
-        scrollListData: []
+        scrollListData: [],
+        refreshing: false
       }
+  }
+
+  _onRefresh() {
+    this.setState({refreshing: true});
   }
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+        }
+      >
           {/*轮播图*/}
           {this.renderHomeSwiper()}
           {/*产品列表*/}

@@ -82,13 +82,13 @@ export default class Home extends Component{
 
 const styles = StyleSheet.create({
     tabbar: {
-        height: 40,
+        height: 45,
         alignItems:'center',
         justifyContent: 'center',
         backgroundColor: '#fff'
     },
     tabStyle:{
-
+        paddingTop: 3
     },
     rightBorder: {
       borderRightWidth: 1,
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
       borderStyle: 'solid'
     },
     tab: {
-        width: 18,
-        height: 18
+        width: 22,
+        height: 22
     }
 });
