@@ -64,7 +64,7 @@ export default class Home extends Component{
                     renderIcon={() => <Image style={styles.tab} source={this.state.UserCenterNormal} />}
                     renderSelectedIcon={() => <Image style={styles.tab} source={this.state.UserCenterSelected} />}
                     onPress={() => this.setState({ selectedTab: 'UserCenter' })}>
-                    {<UserCenterComponent />}
+                    {<UserCenterComponent navigator={this.props.navigator} />}
                 </TabNavigator.Item>
             </TabNavigator>
           </View>

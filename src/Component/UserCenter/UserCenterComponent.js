@@ -13,6 +13,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import LoginComponent from '../Login/LoginComponent';
+
 import { createIconSet } from 'react-native-vector-icons';
 const glyphMap = {
   'setting': 59222,
@@ -33,17 +35,21 @@ class UserCenterComponent extends Component {
       super(props)
   }
 
+  handleLogin() {
+    this.props.navigator.push({component: LoginComponent});
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <View>
+          <TouchableOpacity onPress={this.handleLogin.bind(this)}>
             <Image
               style={styles.face}
               source={{uri: 'http://static.yunipo.com/images/project/covers/20170316/58ca82cf30a62.jpg'}}
             />
             <Text style={styles.name}>龙哥</Text>
-          </View>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.setButton}>
             <IconFont name="setting" size={24} color='#777777'></IconFont>
           </TouchableOpacity>
