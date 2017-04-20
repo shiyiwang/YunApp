@@ -6,8 +6,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View,
-  TouchableOpacity
+  View
 } from 'react-native';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';

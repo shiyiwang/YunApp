@@ -9,19 +9,10 @@ import {
 } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator';
-import { createIconSet } from 'react-native-vector-icons';
+import Iconfont from 'react-native-vector-icons/Iconfont';
 
 import HomeComponent from './Component/Home/HomeComponent';
 import UserCenterComponent from './Component/UserCenter/UserCenterComponent';
-
-const glyphMap = {
-  '推荐': 58896,
-  '投资': 59083,
-  '投后': 59053,
-  '大爆炸': 58935,
-  '我的': 58910
-};
-const IconFont = createIconSet(glyphMap, 'iconfont', 'iconfont.ttf');
 
 export default class Home extends Component{
     static defaultProps = {
@@ -73,10 +64,10 @@ export default class Home extends Component{
 
     componentWillMount() {
         const {selectedColor, normalColor} = this.props;
-        IconFont.getImageSource('推荐', 50, normalColor).then((source) => this.setState({ HomeNormal: source }));
-        IconFont.getImageSource('推荐', 50, selectedColor).then((source) => this.setState({ HomeSelected: source }));
-        IconFont.getImageSource('我的', 50, normalColor).then((source) => this.setState({ UserCenterNormal: source }));
-        IconFont.getImageSource('我的', 50, selectedColor).then((source) => this.setState({ UserCenterSelected: source }));
+        Iconfont.getImageSource('推荐', 50, normalColor).then((source) => this.setState({ HomeNormal: source }));
+        Iconfont.getImageSource('推荐', 50, selectedColor).then((source) => this.setState({ HomeSelected: source }));
+        Iconfont.getImageSource('我的', 50, normalColor).then((source) => this.setState({ UserCenterNormal: source }));
+        Iconfont.getImageSource('我的', 50, selectedColor).then((source) => this.setState({ UserCenterSelected: source }));
     }
 };
 
@@ -85,7 +76,9 @@ const styles = StyleSheet.create({
         height: 45,
         alignItems:'center',
         justifyContent: 'center',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        borderTopWidth: 1,
+        borderColor: '#dcdcdc'
     },
     tabStyle:{
         paddingTop: 3

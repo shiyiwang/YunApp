@@ -1,5 +1,5 @@
 /**
- * 首页
+ * 用户中心
  */
 import React, { Component } from 'react';
 import {
@@ -13,37 +13,34 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import LoginComponent from '../Login/LoginComponent';
+import Iconfont from 'react-native-vector-icons/Iconfont';
 
-import { createIconSet } from 'react-native-vector-icons';
-const glyphMap = {
-  'setting': 59222,
-  'wallet': 59106,
-  'right-arrow': 58918,
-  'member': 58881,
-  'order': 59004,
-  'invest': 59083,
-  'bonus': 58889,
-  'message': 59144
-};
-const IconFont = createIconSet(glyphMap, 'iconfont', 'iconfont.ttf');
+import LoginComponent from '../Login/LoginComponent';
+import SettingItem from '../Common/SettingItem';
+import WalletComponent from './Wallet/WalletComponent';
 
 const {width} = Dimensions.get('window');
 
 class UserCenterComponent extends Component {
   constructor(props){
       super(props)
+      this.handleLogin = this.handleLogin.bind(this);
+      this.handleWallet = this.handleWallet.bind(this);
   }
 
   handleLogin() {
     this.props.navigator.push({component: LoginComponent});
   }
 
+  handleWallet() {
+    this.props.navigator.push({component: WalletComponent});
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity onPress={this.handleLogin.bind(this)}>
+          <TouchableOpacity onPress={this.handleLogin}>
             <Image
               style={styles.face}
               source={{uri: 'http://static.yunipo.com/images/project/covers/20170316/58ca82cf30a62.jpg'}}
@@ -51,7 +48,7 @@ class UserCenterComponent extends Component {
             <Text style={styles.name}>龙哥</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.setButton}>
-            <IconFont name="setting" size={24} color='#777777'></IconFont>
+            <Iconfont name="setting" size={24} color='#777777'></Iconfont>
           </TouchableOpacity>
         </View>
         <View style={styles.chargeBox}>
@@ -64,84 +61,42 @@ class UserCenterComponent extends Component {
           </View>
         </View>
         <View style={styles.setBox}>
-            <TouchableOpacity>
-              <View style={styles.setItem}>
-                <View style={styles.itemFrontBox}>
-                  <IconFont name="wallet" size={18} color='#fe8330'></IconFont>
-                  <Text style={styles.itemTitle}>钱包</Text>
-                </View>
-                <View  style={styles.itemBackBox}>
-                  <Text style={styles.itemDesc}></Text>
-                  <IconFont name="right-arrow" size={18} color='#999999'></IconFont>
-                </View>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View style={styles.setItem}>
-                <View style={styles.itemFrontBox}>
-                  <IconFont name="member" size={18} color='#fe8330'></IconFont>
-                  <Text style={styles.itemTitle}>会员</Text>
-                </View>
-                <View  style={styles.itemBackBox}>
-                  <Text style={styles.itemDesc}>普通投资人</Text>
-                  <IconFont name="right-arrow" size={18} color='#999999'></IconFont>
-                </View>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View style={styles.setItem}>
-                <View style={styles.itemFrontBox}>
-                  <IconFont name="order" size={18} color='#fe8330'></IconFont>
-                  <Text style={styles.itemTitle}>预约</Text>
-                </View>
-                <View  style={styles.itemBackBox}>
-                  <Text style={styles.itemDesc}>暂无预约资格</Text>
-                  <IconFont name="right-arrow" size={18} color='#999999'></IconFont>
-                </View>
-              </View>
-            </TouchableOpacity>
-            <View style={styles.setItem}>
-              <TouchableOpacity style={{flex: 1,alignItems: 'center',
-              justifyContent: 'space-between',
-              flexDirection: 'row'}} onPress={() => console.log('press')}>
-                <View style={styles.itemFrontBox}>
-                  <IconFont name="invest" size={18} color='#fe8330'></IconFont>
-                  <Text style={styles.itemTitle}>投资</Text>
-                </View>
-                <View  style={styles.itemBackBox}>
-                  <Text style={styles.itemDesc}></Text>
-                  <IconFont name="right-arrow" size={18} color='#999999'></IconFont>
-                </View>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity>
-              <View style={[styles.setItem, styles.noBorder]}>
-                <View style={styles.itemFrontBox}>
-                  <IconFont name="bonus" size={18} color='#fe8330'></IconFont>
-                  <Text style={styles.itemTitle}>分红</Text>
-                </View>
-                <View  style={styles.itemBackBox}>
-                  <Text style={styles.itemDesc}></Text>
-                  <IconFont name="right-arrow" size={18} color='#999999'></IconFont>
-                </View>
-              </View>
-            </TouchableOpacity>
+          <SettingItem
+            handlePress={this.handleWallet}
+            title='钱包'
+            iconName='wallet'
+          />
+          <SettingItem
+            handlePress={() => console.log('click')}
+            title='会员'
+            desc='普通投资人'
+            iconName='member'
+          />
+          <SettingItem
+            handlePress={() => console.log('click')}
+            title='预约'
+            desc='暂无预约资格'
+            iconName='order'
+          />
+          <SettingItem
+            handlePress={() => console.log('click')}
+            title='投资'
+            iconName='invest'
+          />
+          <SettingItem
+            handlePress={() => console.log('click')}
+            title='分红'
+            iconName='bonus'
+            noBorder={true}
+          />
         </View>
         <View style={styles.setBox}>
-            <TouchableOpacity>
-              <View style={[styles.setItem, styles.noBorder]}>
-                <View style={styles.itemFrontBox}>
-                  <View>
-                    <IconFont name="message" size={18} color='#fe8330'></IconFont>
-                  </View>
-                  <Text style={styles.itemTitle}>消息</Text>
-                </View>
-                <View  style={styles.itemBackBox}>
-                  <Text style={styles.itemDesc}></Text>
-                  <IconFont name="right-arrow" size={18} color='#999999'></IconFont>
-                </View>
-              </View>
-            </TouchableOpacity>
+          <SettingItem
+            handlePress={() => console.log('click')}
+            title='消息'
+            iconName='message'
+            noBorder={true}
+          />
         </View>
       </ScrollView>
     );
@@ -167,7 +122,7 @@ const styles = StyleSheet.create({
   },
   name: {
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: 15,
     color: '#666666',
     paddingTop: 8
   },
@@ -187,11 +142,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   chargeDesc: {
-    fontSize: 11,
+    fontSize: 12,
     color: 'rgba(255, 255, 255, 0.7)'
   },
   chargePrice: {
-    fontSize: 30,
+    fontSize: 32,
     fontWeight: 'bold',
     color: '#FFFFFF'
   },
@@ -205,37 +160,6 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 2, height: 2},
     shadowOpacity: 0.5,
     shadowRadius: 3
-  },
-  setItem: {
-    flex: 1,
-    height: 40,
-    borderBottomWidth: 1,
-    borderStyle: 'solid',
-    borderBottomColor: '#dedede',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row'
-  },
-  noBorder: {
-    borderBottomWidth: 0
-  },
-  itemFrontBox: {
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  itemTitle: {
-    marginLeft: 6,
-    color: '#333333'
-  },
-  itemBackBox: {
-    paddingRight: 12,
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  itemDesc: {
-    marginRight: 6,
-    fontSize: 12,
-    color: '#BBBBBB'
   }
 });
 

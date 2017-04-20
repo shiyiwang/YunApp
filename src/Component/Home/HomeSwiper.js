@@ -31,7 +31,7 @@ class HomeSwiper extends Component {
           autoplay={true}
           horizontal={true}
           autoplayTimeout={4}
-          height={180}
+          height={200}
           dot={<View style={styles.dot} />}
           activeDot={<View style={styles.activeDot} />}
           paginationStyle={styles.paginationStyle}
@@ -80,7 +80,7 @@ class HomeSwiper extends Component {
 const styles = StyleSheet.create({
   container: {
       width: width,
-      height: 180
+      height: 200
   },
   imageBox: {
     position: 'absolute',
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0,0,0, 0.6)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     alignItems: 'center',
     justifyContent: 'center'
   },

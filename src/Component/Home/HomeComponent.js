@@ -63,7 +63,7 @@ class HomeComponent extends Component {
       {id: 4, title: '全美基因（香港）', desc: '基因诊疗技术专家，大幅提升生命质量', image: 'http://static.yunipo.com/images/project/covers/20170306/58bd2f3149f79.jpg'}
     ];
     let scrollListData = [
-      1,2
+      1
     ]
     this.setState({
         swiperData: swiperData,
@@ -87,7 +87,7 @@ class HomeComponent extends Component {
   }
 
   renderHomeScrollList() {
-    if(this.state.scrollListData.length){
+    if(this.state.scrollListData.length > 0){
       return (
         <HomeScrollList
           data = {this.state.scrollListData}

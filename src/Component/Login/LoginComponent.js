@@ -55,21 +55,21 @@ class LoginComponent extends Component {
             </View>
           </View>
           <View tabLabel="注册" style={styles.tabView}>
-          <View style={styles.form}>
-            <Kohana
-              onChangeText={(text) => { console.log(text) }}
-              style={[styles.input, { backgroundColor: '#f9f5ed' }]}
-              label={'请输入手机号'}
-              iconClass={Icon}
-              iconName={'phone'}
-              iconColor={'#FF6700'}
-              labelStyle={{ color: '#999999', fontSize: 14 }}
-              inputStyle={{ color: '#666666', fontSize: 14 }}
-            />
-            <TouchableOpacity style={styles.button}>
-              <Text style={{fontSize: 14, color: '#FFFFFF'}}>注册</Text>
-            </TouchableOpacity>
-          </View>
+            <View style={styles.form}>
+              <Kohana
+                onChangeText={(text) => { console.log(text) }}
+                style={[styles.input, { backgroundColor: '#f9f5ed' }]}
+                label={'请输入手机号'}
+                iconClass={Icon}
+                iconName={'phone'}
+                iconColor={'#FF6700'}
+                labelStyle={{ color: '#999999', fontSize: 14 }}
+                inputStyle={{ color: '#666666', fontSize: 14 }}
+              />
+              <TouchableOpacity style={styles.button}>
+                <Text style={{fontSize: 14, color: '#FFFFFF'}}>注册</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </ScrollableTabView>
       </View>
