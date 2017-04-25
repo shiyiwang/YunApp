@@ -13,6 +13,9 @@ import {
 import SettingItem from '../../Common/SettingItem';
 import Button from '../../Common/Button';
 import FrozenPrice from './FrozenPrice';
+import Bill from './Bill';
+import Score from './Score';
+import Coupon from './Coupon';
 
 const {height} = Dimensions.get('window');
 
@@ -20,14 +23,26 @@ class WalletComponent extends Component {
   constructor(props){
       super(props)
       this.handleFrozenPrice = this.handleFrozenPrice.bind(this);
-      // this.handleBill        = this.handleBill.bind(this);
-      // this.handleCoupon      = this.handleCoupon.bind(this);
+      this.handleBill        = this.handleBill.bind(this);
+      this.handleCoupon      = this.handleCoupon.bind(this);
       // this.handleBankCard    = this.handleBankCard.bind(this);
-      // this.handleScore       = this.handleScore.bind(this);
+      this.handleScore       = this.handleScore.bind(this);
   }
 
   handleFrozenPrice() {
     this.props.navigator.push({component: FrozenPrice});
+  }
+
+  handleBill() {
+    this.props.navigator.push({component: Bill});
+  }
+
+  handleCoupon() {
+    this.props.navigator.push({component: Coupon});
+  }
+
+  handleScore() {
+    this.props.navigator.push({component: Score});
   }
 
   render(){
@@ -45,23 +60,23 @@ class WalletComponent extends Component {
               title='冻结金额'
             />
             <SettingItem
-              handlePress={() => console.log('click')}
+              handlePress={this.handleBill}
               title='对账单'
               noBorder={true}
             />
           </View>
           <View style={styles.setBox}>
             <SettingItem
-              handlePress={() => console.log('click')}
+              handlePress={this.handleCoupon}
               title='优惠券'
-              desc='0 张'
+              desc='2 张'
             />
             <SettingItem
               handlePress={() => console.log('click')}
               title='银行卡'
             />
             <SettingItem
-              handlePress={() => console.log('click')}
+              handlePress={this.handleScore}
               title='积分'
               desc='41484'
               noBorder={true}
@@ -90,7 +105,9 @@ class WalletComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2'
+    backgroundColor: '#F2F2F2',
+    borderTopWidth: 20,
+    borderColor: '#fe8330'
   },
   header: {
     height: 120,
@@ -100,11 +117,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   chargeDesc: {
-    fontSize: 12,
+    fontSize: 13,
     color: 'rgba(255, 255, 255, 0.7)'
   },
   chargePrice: {
-    fontSize: 36,
+    fontSize: 38,
     fontWeight: 'bold',
     color: '#FFFFFF'
   },

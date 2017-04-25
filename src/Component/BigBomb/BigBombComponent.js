@@ -21,7 +21,7 @@ class BigBombComponent extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={{paddingTop: 20}}>
         <View style={styles.card}>
             <Text>大爆炸</Text>
         </View>

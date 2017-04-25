@@ -48,7 +48,6 @@ export default class Button extends Component{
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     height: 40,
     backgroundColor: '#FF6700',
     alignItems:'center',

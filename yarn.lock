@@ -2923,6 +2923,20 @@ react-devtools-core@^2.0.8:
     cross-env "^3.1.4"
     ws "^2.0.3"
 
+react-native-animatable@^1.1.1:
+  version "1.1.1"
+  resolved "http://registry.npm.taobao.org/react-native-animatable/download/react-native-animatable-1.1.1.tgz#00ddc72985f62f62a11a505abb1a06e77a92cd8a"
+
+react-native-chooser@^1.5.0:
+  version "1.5.0"
+  resolved "http://registry.npm.taobao.org/react-native-chooser/download/react-native-chooser-1.5.0.tgz#6f33eea6a869a473b2af8e67c1b8d3863cee0e54"
+
+react-native-modal@^2.3.2:
+  version "2.3.2"
+  resolved "http://registry.npm.taobao.org/react-native-modal/download/react-native-modal-2.3.2.tgz#d616355e312d378a9dcd99de5565523b7b5b4c84"
+  dependencies:
+    react-native-animatable "^1.1.1"
+
 react-native-scrollable-tab-view@^0.7.4:
   version "0.7.4"
   resolved "http://registry.npm.taobao.org/react-native-scrollable-tab-view/download/react-native-scrollable-tab-view-0.7.4.tgz#623a047cbfab35a27b8689095af524e9aac74b62"

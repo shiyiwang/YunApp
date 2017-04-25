@@ -15,6 +15,7 @@ import {
 
 import Iconfont from 'react-native-vector-icons/Iconfont';
 
+import Button from '../Common/Button'
 import LoginComponent from '../Login/LoginComponent';
 import SettingItem from '../Common/SettingItem';
 import WalletComponent from './Wallet/WalletComponent';
@@ -56,8 +57,13 @@ class UserCenterComponent extends Component {
             <Text style={styles.chargeDesc}>可用余额(元)</Text>
             <Text style={styles.chargePrice}>100.00</Text>
           </View>
-          <View>
-            <Text>充值</Text>
+          <View style={{justifyContent: 'center', alignItems: 'flex-end', width: 50, height: 25}}>
+            <Button
+              text="充值"
+              btnStyle={{backgroundColor: 'rgba(255,255,255,0.3)', height: 25, width: 50, borderRadius: 10}}
+              textStyle={{color: '#FFFFFF', fontSize: 12}}
+              onPress={() => console.log('btn click')}
+            />
           </View>
         </View>
         <View style={styles.setBox}>
@@ -106,7 +112,9 @@ class UserCenterComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2'
+    backgroundColor: '#F2F2F2',
+    borderTopWidth: 20,
+    borderColor: '#FFFFFF'
   },
   header: {
     flex: 1,

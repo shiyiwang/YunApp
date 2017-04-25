@@ -21,7 +21,7 @@ class TououComponent extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={{paddingTop: 20}}>
         <View style={styles.card}>
             <Text>投后</Text>
         </View>

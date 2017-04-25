@@ -94,7 +94,9 @@ class FrozenPrice extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFFFFF',
+    borderTopWidth: 20,
+    borderColor: '#3d9fa0'
   },
   header: {
     height: 110,
@@ -104,11 +106,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   frozenDesc: {
-    fontSize: 12,
+    fontSize: 13,
     color: 'rgba(255, 255, 255, 0.7)'
   },
   frozenPrice: {
-    fontSize: 36,
+    fontSize: 38,
     fontWeight: 'bold',
     color: '#FFFFFF'
   },
