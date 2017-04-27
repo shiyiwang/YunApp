@@ -62,7 +62,7 @@ class MemberComponent extends Component {
             />
             {this._renderFaceIcon()}
           </View>
-          <Text style={styles.name}>jimcry</Text>
+          <Text style={styles.name}>吴家龙</Text>
         </View>
         <View style={styles.levelBox}>
             <View style={styles.levelLineBg}></View>
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   name: {
-    marginTop: 5,
+    marginTop: 10,
     fontSize: 18,
     color: '#FFFFFF'
   },
