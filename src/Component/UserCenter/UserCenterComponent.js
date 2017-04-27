@@ -19,6 +19,7 @@ import Button from '../Common/Button'
 import LoginComponent from '../Login/LoginComponent';
 import SettingItem from '../Common/SettingItem';
 import WalletComponent from './Wallet/WalletComponent';
+import MemberComponent from './Member/MemberComponent';
 
 const {width} = Dimensions.get('window');
 
@@ -27,6 +28,7 @@ class UserCenterComponent extends Component {
       super(props)
       this.handleLogin = this.handleLogin.bind(this);
       this.handleWallet = this.handleWallet.bind(this);
+      this.handlMember = this.handlMember.bind(this);
   }
 
   handleLogin() {
@@ -35,6 +37,10 @@ class UserCenterComponent extends Component {
 
   handleWallet() {
     this.props.navigator.push({component: WalletComponent});
+  }
+
+  handlMember() {
+    this.props.navigator.push({component: MemberComponent});
   }
 
   render() {
@@ -73,7 +79,7 @@ class UserCenterComponent extends Component {
             iconName='wallet'
           />
           <SettingItem
-            handlePress={() => console.log('click')}
+            handlePress={this.handlMember}
             title='会员'
             desc='普通投资人'
             iconName='member'
