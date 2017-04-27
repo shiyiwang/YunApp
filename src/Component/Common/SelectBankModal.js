@@ -68,7 +68,7 @@ export default class SelectBankModal extends Component {
       );
 
         this.state = {
-            animationType: 'slide',
+            animationType: 'fade',
             modalVisible: false,
             transparent: false,
             selected: 'please select'

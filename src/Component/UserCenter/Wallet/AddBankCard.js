@@ -62,13 +62,13 @@ class AddBankCard extends Component {
             <View style={styles.inputBox}>
               <SelectBankModal
                 data={data}
-                initValue="请选择银行！"
+                initValue="请选择银行"
                 optionStyle={{padding: 12}}
                 onChange={(option)=>{ this.setState({bank:option.label})}}>
                 <TextInput
                     style={{height: 25, width: 0.8 * width,fontSize: 16, color: '#333333'}}
                     editable={false}
-                    placeholder="请选择银行！"
+                    placeholder="请选择银行"
                     value={this.state.bank} />
                 </SelectBankModal>
             </View>
