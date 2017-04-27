@@ -11,6 +11,7 @@ import {
 } from 'react-native'
 
 import Button from '../../Common/Button'
+import SelectBankModal from '../../Common/SelectBankModal'
 import { naviGoBack } from '../../../Utils/CommonUtils';
 
 const {width} = Dimensions.get('window');
@@ -20,7 +21,7 @@ class AddBankCard extends Component {
     super(props)
     this.handleAdd = this.handleAdd.bind(this)
     this.state = {
-      bank: null,
+      bank: '',
       cardNum: '',
       userName: '吴家龙'
     }
@@ -35,12 +36,46 @@ class AddBankCard extends Component {
   }
 
   render(){
+    let index = 0;
+    const data = [
+        { key: index++, section: true, label: '请选择银行' },
+        { key: index++, label: '中国农业银行' },
+        { key: index++, label: '中国建设银行' },
+        { key: index++, label: '中国银行' },
+        { key: index++, label: '中信银行' },
+        { key: index++, label: '中国农业银行' },
+        { key: index++, label: '中国建设银行' },
+        { key: index++, label: '中国银行' },
+        { key: index++, label: '中信银行' },
+        { key: index++, label: '中国农业银行' },
+        { key: index++, label: '中国建设银行' },
+        { key: index++, label: '中国银行' },
+        { key: index++, label: '中信银行' }
+    ];
     return (
       <View style={styles.container}>
         <View style={styles.form}>
           <View style={styles.formItem}>
             <View style={styles.labelBox}>
-              <Text style={styles.label}>卡 号</Text>
+              <Text style={styles.label}>银   行</Text>
+            </View>
+            <View style={styles.inputBox}>
+              <SelectBankModal
+                data={data}
+                initValue="请选择银行！"
+                optionStyle={{padding: 12}}
+                onChange={(option)=>{ this.setState({bank:option.label})}}>
+                <TextInput
+                    style={{height: 25, width: 0.8 * width,fontSize: 16, color: '#333333'}}
+                    editable={false}
+                    placeholder="请选择银行！"
+                    value={this.state.bank} />
+                </SelectBankModal>
+            </View>
+          </View>
+          <View style={styles.formItem}>
+            <View style={styles.labelBox}>
+              <Text style={styles.label}>卡   号</Text>
             </View>
             <View style={styles.inputBox}>
               <TextInput
@@ -53,7 +88,7 @@ class AddBankCard extends Component {
           </View>
           <View style={styles.formItem}>
             <View style={styles.labelBox}>
-              <Text style={styles.label}>姓 名</Text>
+              <Text style={styles.label}>姓   名</Text>
             </View>
             <View style={styles.inputBox}>
               <TextInput
