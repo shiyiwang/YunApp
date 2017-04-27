@@ -20,15 +20,19 @@ import LoginComponent from '../Login/LoginComponent';
 import SettingItem from '../Common/SettingItem';
 import WalletComponent from './Wallet/WalletComponent';
 import MemberComponent from './Member/MemberComponent';
+import OrderComponent from './Order/OrderComponent';
+import InvestComponent from './Invest/InvestComponent';
 
 const {width} = Dimensions.get('window');
 
 class UserCenterComponent extends Component {
   constructor(props){
       super(props)
-      this.handleLogin = this.handleLogin.bind(this);
+      this.handleLogin  = this.handleLogin.bind(this);
       this.handleWallet = this.handleWallet.bind(this);
-      this.handlMember = this.handlMember.bind(this);
+      this.handlMember  = this.handlMember.bind(this);
+      this.handleOrder   = this.handleOrder.bind(this);
+      this.handleInvest  = this.handleInvest.bind(this);
   }
 
   handleLogin() {
@@ -41,6 +45,14 @@ class UserCenterComponent extends Component {
 
   handlMember() {
     this.props.navigator.push({component: MemberComponent});
+  }
+
+  handleOrder() {
+    this.props.navigator.push({component: OrderComponent});
+  }
+
+  handleInvest() {
+    this.props.navigator.push({component: InvestComponent});
   }
 
   render() {
@@ -85,13 +97,13 @@ class UserCenterComponent extends Component {
             iconName='member'
           />
           <SettingItem
-            handlePress={() => console.log('click')}
+            handlePress={this.handleOrder}
             title='预约'
             desc='暂无预约资格'
             iconName='order'
           />
           <SettingItem
-            handlePress={() => console.log('click')}
+            handlePress={this.handleInvest}
             title='投资'
             iconName='invest'
           />

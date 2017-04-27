@@ -237,7 +237,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#b1a79b'
   },
-
   privilegeBox: {
     paddingTop: 5,
     paddingBottom: 5,
