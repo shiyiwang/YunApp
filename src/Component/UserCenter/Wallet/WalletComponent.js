@@ -16,6 +16,7 @@ import FrozenPrice from './FrozenPrice';
 import Bill from './Bill';
 import Score from './Score';
 import Coupon from './Coupon';
+import BankCard from './BankCard';
 
 const {height} = Dimensions.get('window');
 
@@ -25,7 +26,7 @@ class WalletComponent extends Component {
       this.handleFrozenPrice = this.handleFrozenPrice.bind(this);
       this.handleBill        = this.handleBill.bind(this);
       this.handleCoupon      = this.handleCoupon.bind(this);
-      // this.handleBankCard    = this.handleBankCard.bind(this);
+      this.handleBankCard    = this.handleBankCard.bind(this);
       this.handleScore       = this.handleScore.bind(this);
   }
 
@@ -43,6 +44,10 @@ class WalletComponent extends Component {
 
   handleScore() {
     this.props.navigator.push({component: Score});
+  }
+
+  handleBankCard() {
+    this.props.navigator.push({component: BankCard});
   }
 
   render(){
@@ -72,7 +77,7 @@ class WalletComponent extends Component {
               desc='2 张'
             />
             <SettingItem
-              handlePress={() => console.log('click')}
+              handlePress={this.handleBankCard}
               title='银行卡'
             />
             <SettingItem

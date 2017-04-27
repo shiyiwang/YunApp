@@ -19,14 +19,12 @@ const CouponTabBar = React.createClass({
       {this.props.tabs.map((tab, i) => {
         const color = this.props.activeTab === i ? '#FF6700' : '#666666';
         return (
-
             <View style={this.props.activeTab === i ? styles.active : styles.normal}>
               <TouchableOpacity key={tab} onPress={() => this.props.goToPage(i)} style={styles.tab}>
               <Text style={styles.font} style={{color: color}}>{tab}</Text>
                 </TouchableOpacity>
             </View>
-
-        );
+        )
       })}
     </View>;
   },
