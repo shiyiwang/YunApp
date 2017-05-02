@@ -13,6 +13,7 @@ import {
 
 import Iconfont from 'react-native-vector-icons/Iconfont';
 
+import BackPageComponent from '../../Common/BackPageComponent'
 import { naviGoBack } from '../../../Utils/CommonUtils';
 
 const {width} = Dimensions.get('window');
@@ -38,7 +39,7 @@ const data = [
   }
 ]
 
-class FrozenPrice extends Component {
+class FrozenPrice extends BackPageComponent {
   constructor(props){
       super(props)
       this.handleBack = this.handleBack.bind(this)

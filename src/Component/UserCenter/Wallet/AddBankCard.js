@@ -10,13 +10,14 @@ import {
   Dimensions
 } from 'react-native'
 
+import BackPageComponent from '../../Common/BackPageComponent'
 import Button from '../../Common/Button'
 import SelectBankModal from '../../Common/SelectBankModal'
 import { naviGoBack } from '../../../Utils/CommonUtils';
 
 const {width} = Dimensions.get('window');
 
-class AddBankCard extends Component {
+class AddBankCard extends BackPageComponent {
   constructor(props){
     super(props)
     this.handleAdd = this.handleAdd.bind(this)

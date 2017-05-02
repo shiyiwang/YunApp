@@ -11,11 +11,12 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import BackPageComponent from '../../Common/BackPageComponent'
 import AddBankCard from './AddBankCard'
 
 const {width} = Dimensions.get('window');
 
-class BankCard extends Component {
+class BankCard extends BackPageComponent {
   constructor(props){
     super(props);
     this.handleAddBankCard = this.handleAddBankCard.bind(this);

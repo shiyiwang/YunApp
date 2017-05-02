@@ -8,7 +8,9 @@ import {
   Text
 } from 'react-native'
 
-class InvestComponent extends Component {
+import BackPageComponent from '../../Common/BackPageComponent'
+
+class InvestComponent extends BackPageComponent {
   render(){
     return (
       <View style={styles.container}>

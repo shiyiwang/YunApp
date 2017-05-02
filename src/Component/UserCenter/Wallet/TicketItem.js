@@ -11,11 +11,12 @@ import {
 
 import Iconfont from 'react-native-vector-icons/Iconfont';
 
+import BackPageComponent from '../../Common/BackPageComponent'
 import Button from '../../Common/Button'
 
 const {width} = Dimensions.get('window');
 
-class TicketItem extends Component {
+class TicketItem extends BackPageComponent {
   static propTypes = {
     price: PropTypes.string,
     priceDesc: PropTypes.string.isRequired,

@@ -13,9 +13,11 @@ import {
 
 import Iconfont from 'react-native-vector-icons/Iconfont';
 
+import BackPageComponent from '../../Common/BackPageComponent'
+
 const {width} = Dimensions.get('window');
 
-class MemberComponent extends Component {
+class MemberComponent extends BackPageComponent {
 
   constructor() {
     super()

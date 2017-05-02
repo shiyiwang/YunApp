@@ -10,7 +10,9 @@ import {
 
 import {Select, Option} from "react-native-chooser";
 
-class Bill extends Component {
+import BackPageComponent from '../../Common/BackPageComponent'
+
+class Bill extends BackPageComponent {
   constructor(props){
       super(props)
       this.onSelect = this.onSelect.bind(this);

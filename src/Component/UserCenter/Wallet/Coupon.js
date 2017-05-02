@@ -15,6 +15,7 @@ import {
 
 import Modal from 'react-native-modal';
 
+import BackPageComponent from '../../Common/BackPageComponent'
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import CouponTabBar from './CouponTabBar';
 import TicketItem from './TicketItem'
@@ -22,7 +23,7 @@ import Button from '../../Common/Button'
 
 const {height, width} = Dimensions.get('window');
 
-class Coupon extends Component {
+class Coupon extends BackPageComponent {
   constructor(props){
     super(props);
     this.state = {

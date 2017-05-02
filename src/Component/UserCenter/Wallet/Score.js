@@ -10,6 +10,7 @@ import {
   Dimensions
 } from 'react-native'
 
+import BackPageComponent from '../../Common/BackPageComponent'
 import Button from '../../Common/Button'
 
 const {width} = Dimensions.get('window');
@@ -41,7 +42,7 @@ const data = [
   },
 ]
 
-class Score extends Component {
+class Score extends BackPageComponent {
   render(){
     return (
       <View style={styles.container}>

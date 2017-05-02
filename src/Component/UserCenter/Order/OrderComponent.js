@@ -8,7 +8,9 @@ import {
   Text
 } from 'react-native'
 
-class OrderComponent extends Component {
+import BackPageComponent from '../../Common/BackPageComponent'
+
+class OrderComponent extends BackPageComponent {
   render(){
     return (
       <View style={styles.container}>

@@ -10,6 +10,7 @@ import {
   Dimensions
 } from 'react-native'
 
+import BackPageComponent from '../../Common/BackPageComponent'
 import SettingItem from '../../Common/SettingItem';
 import Button from '../../Common/Button';
 import FrozenPrice from './FrozenPrice';
@@ -20,7 +21,7 @@ import BankCard from './BankCard';
 
 const {height} = Dimensions.get('window');
 
-class WalletComponent extends Component {
+class WalletComponent extends BackPageComponent {
   constructor(props){
       super(props)
       this.handleFrozenPrice = this.handleFrozenPrice.bind(this);
