@@ -6,7 +6,8 @@ import {
     ScrollView,
     Dimensions,
     Image,
-    StatusBar
+    StatusBar,
+    Platform
 } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator';
@@ -59,8 +60,8 @@ export default class Home extends Component{
                     title={tabName[1]}
                     selected={this.state.selectedTab === 'TouhouComponent'}
                     selectedTitleStyle={{color: selectedColor}}
-                    renderIcon={() => <Image style={styles.tab} source={this.state.TouhouComponentNormal} />}
-                    renderSelectedIcon={() => <Image style={styles.tab} source={this.state.TouhouComponentSelected} />}
+                    renderIcon={() => <Image style={[styles.tab, Platform.OS === 'android' ? {width: 28} : '']} source={this.state.TouhouComponentNormal} />}
+                    renderSelectedIcon={() => <Image style={[styles.tab, Platform.OS === 'android' ? {width: 28} : '']} source={this.state.TouhouComponentSelected} />}
                     onPress={() => {
                       this.setState({ selectedTab: 'TouhouComponent' })
                       StatusBar.setBarStyle('default')
@@ -113,7 +114,7 @@ export default class Home extends Component{
 
 const styles = StyleSheet.create({
     tabbar: {
-        height: 45,
+        height: 50,
         alignItems:'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
       borderStyle: 'solid'
     },
     tab: {
-        width: 22,
-        height: 22
+      width: 22,
+      height: 22
     }
 });

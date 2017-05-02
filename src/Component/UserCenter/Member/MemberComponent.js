@@ -23,11 +23,11 @@ class MemberComponent extends BackPageComponent {
     super()
     this.state = {
       grade: 2,
-      lineWidth: 180
-    };
+      lineWidth: 175
+    }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     StatusBar.setBarStyle('light-content')
   }
 

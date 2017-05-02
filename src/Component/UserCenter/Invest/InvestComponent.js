@@ -24,7 +24,7 @@ class InvestComponent extends BackPageComponent {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.priceName}>投资金额（元）1</Text>
+          <Text style={styles.priceName}>投资金额（元）</Text>
           <Text style={styles.price}>47,973.00</Text>
         </View>
         <View style={styles.descBox}>

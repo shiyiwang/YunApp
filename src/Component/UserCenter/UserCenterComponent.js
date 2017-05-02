@@ -22,17 +22,21 @@ import WalletComponent from './Wallet/WalletComponent';
 import MemberComponent from './Member/MemberComponent';
 import OrderComponent from './Order/OrderComponent';
 import InvestComponent from './Invest/InvestComponent';
+import BonusComponent from './Bonus/BonusComponent';
+import MessageComponent from './Message/MessageComponent';
 
 const {width} = Dimensions.get('window');
 
 class UserCenterComponent extends Component {
   constructor(props){
-      super(props)
-      this.handleLogin  = this.handleLogin.bind(this);
-      this.handleWallet = this.handleWallet.bind(this);
-      this.handlMember  = this.handlMember.bind(this);
-      this.handleOrder   = this.handleOrder.bind(this);
-      this.handleInvest  = this.handleInvest.bind(this);
+    super(props)
+    this.handleLogin   = this.handleLogin.bind(this);
+    this.handleWallet  = this.handleWallet.bind(this);
+    this.handlMember   = this.handlMember.bind(this);
+    this.handleOrder   = this.handleOrder.bind(this);
+    this.handleInvest  = this.handleInvest.bind(this);
+    this.handleBonus   = this.handleBonus.bind(this);
+    this.handleMessage = this.handleMessage.bind(this);
   }
 
   handleLogin() {
@@ -53,6 +57,14 @@ class UserCenterComponent extends Component {
 
   handleInvest() {
     this.props.navigator.push({component: InvestComponent});
+  }
+
+  handleBonus() {
+    this.props.navigator.push({component: BonusComponent});
+  }
+
+  handleMessage() {
+    this.props.navigator.push({component: MessageComponent});
   }
 
   render() {
@@ -108,7 +120,7 @@ class UserCenterComponent extends Component {
             iconName='invest'
           />
           <SettingItem
-            handlePress={() => console.log('click')}
+            handlePress={this.handleBonus}
             title='分红'
             iconName='bonus'
             noBorder={true}
@@ -116,7 +128,7 @@ class UserCenterComponent extends Component {
         </View>
         <View style={styles.setBox}>
           <SettingItem
-            handlePress={() => console.log('click')}
+            handlePress={this.handleMessage}
             title='消息'
             iconName='message'
             noBorder={true}
