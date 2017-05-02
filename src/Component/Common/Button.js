@@ -21,7 +21,7 @@ export default class Button extends Component{
   render(){
     if(Platform.OS === 'android') {
       return (
-        <TouchableNativeFeedback
+        <TouchableNativeFeedback style={{flex: 1}}
           onPress={this.props.onPress}>
           {this._renderContent()}
         </TouchableNativeFeedback>

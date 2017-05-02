@@ -25,7 +25,7 @@ class SettingItem extends Component {
     if(Platform.OS === 'android') {
       return (
         <View style={[styles.container, this.props.noBorder ? styles.noBorder : '']}>
-          <TouchableNativeFeedback style={styles.setItem}
+          <TouchableOpacity style={styles.setItem}
             onPress={this.props.handlePress}
             >
             <View style={styles.itemFrontBox}>
@@ -36,7 +36,7 @@ class SettingItem extends Component {
               <Text style={styles.itemDesc}>{this.props.desc}</Text>
               <Iconfont name="right-arrow" size={18} color='#999999'></Iconfont>
             </View>
-          </TouchableNativeFeedback>
+          </TouchableOpacity>
         </View>
       )
     }else if(Platform.OS === 'ios'){
