@@ -6,7 +6,7 @@ import {
   View,
   StyleSheet,
   Text,
-  ScrollView,
+  ListView,
   StatusBar,
   TouchableOpacity,
   Dimensions
@@ -37,6 +37,14 @@ const data = [
 ]
 
 class BonusComponent extends BackPageComponent {
+  constructor(props) {
+    super(props);
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(data),
+    };
+  }
+
   componentWillMount() {
     StatusBar.setBarStyle('default')
   }
@@ -55,31 +63,27 @@ class BonusComponent extends BackPageComponent {
             />
           </View>
         </View>
-        <ScrollView style={styles.msgBox}>
-          {this._renderItem()}
-        </ScrollView>
+        <ListView
+          style={styles.msgBox}
+          dataSource={this.state.dataSource}
+          renderRow={this._renderRow.bind(this)}
+        />
       </View>
     )
   }
 
-  _renderItem() {
-    let itemList = []
-
-    data.map((item, i) => {
-      itemList.push(
-        <View style={styles.msgItem} key={i}>
-          <View style={styles.iconBox}>
-            <Text style={styles.iconName}>通知</Text>
-          </View>
-          <View style={styles.infoBox}>
-            <Text style={styles.infoDesc} numberOfLines={2}>{item.content}</Text>
-            <Text style={styles.infoTime}>{item.time}</Text>
-          </View>
+  _renderRow(rowData) {
+    return (
+      <View style={styles.msgItem}>
+        <View style={styles.iconBox}>
+          <Text style={styles.iconName}>通知</Text>
         </View>
-      )
-    })
-
-    return itemList
+        <View style={styles.infoBox}>
+          <Text style={styles.infoDesc} numberOfLines={2}>{rowData.content}</Text>
+          <Text style={styles.infoTime}>{rowData.time}</Text>
+        </View>
+      </View>
+    )
   }
 }
 
