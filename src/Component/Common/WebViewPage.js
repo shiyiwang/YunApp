@@ -21,7 +21,6 @@ export default class WebViewPage extends BackPageComponent{
         <WebView
           source={{uri: "http://m.yunipo.com/activity/dividendshare?shareuserid=1&projectid=95"}}
           style={styles.webView}
-          scalesPageToFit={true}
           javaScriptEnabled={true}
         />
       </View>
@@ -31,7 +30,6 @@ export default class WebViewPage extends BackPageComponent{
 
 const styles = StyleSheet.create({
   webView: {
-    width: width,
-    height: height
+    flex: 1
   }
 });

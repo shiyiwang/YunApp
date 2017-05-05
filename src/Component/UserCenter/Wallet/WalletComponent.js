@@ -32,7 +32,7 @@ class WalletComponent extends BackPageComponent {
   }
 
   handleFrozenPrice() {
-    this.props.navigator.push({component: FrozenPrice});
+    this.props.navigation.navigate('FrozenPrice')
   }
 
   handleBill() {

@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  Navigator,
-  Text,
-  View
+  AppRegistry
 } from 'react-native';
-import App from './src/app';
-
-export default class YunApp extends Component {
-	render() {
-		return (
-			<App />
-		)
-	}
-}
+import YunApp from './src/app';
 
 AppRegistry.registerComponent('YunApp', () => YunApp);

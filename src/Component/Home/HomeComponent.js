@@ -8,7 +8,8 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  RefreshControl
+  RefreshControl,
+  StyleSheet
 } from 'react-native';
 
 //轮播图
@@ -19,6 +20,16 @@ import HomeScrollList from './HomeScrollList';
 import CommonLoading from '../Common/Loading';
 
 class HomeComponent extends Component {
+  static navigationOptions = {
+    tabBarLabel: '推荐',
+    tabBarIcon: ({tintColor}) => (
+      <Image
+        source={require('../../../img/home.png')}
+        style={[styles.icon, {tintColor: tintColor}]}
+      />
+    )
+  }
+
   constructor(props){
       super(props)
       this.state = {
@@ -35,6 +46,7 @@ class HomeComponent extends Component {
   render() {
     return (
       <ScrollView
+        style={{backgroundColor: '#FFFFFF'}}
         refreshControl={
           <RefreshControl
             refreshing={this.state.refreshing}
@@ -102,5 +114,13 @@ class HomeComponent extends Component {
   }
 
 }
+
+const styles = StyleSheet.create({
+	icon: {
+    height: 26,
+		width: 26,
+		resizeMode: 'contain'
+  }
+});
 
 export default HomeComponent;

@@ -10,7 +10,7 @@ import {
     Platform
 } from 'react-native';
 
-import TabNavigator from 'react-native-tab-navigator';
+import { TabNavigator } from 'react-navigation';
 import Iconfont from 'react-native-vector-icons/Iconfont';
 
 import HomeComponent from './Component/Home/HomeComponent';

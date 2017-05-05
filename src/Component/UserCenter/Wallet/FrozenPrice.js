@@ -56,11 +56,6 @@ class FrozenPrice extends BackPageComponent {
   render(){
     return (
       <View style={styles.container}>
-        <View style={{height: 25, flex: 1, backgroundColor: 'rgba(255,255,255,0)', justifyContent: 'center', position: 'absolute', zIndex: 10, top: 0, right: 0, left: 0}}>
-          <TouchableOpacity onPress={this.handleBack}>
-            <Iconfont name="left-arrow" size={18} color='rgba(255,255,255,0.5)'></Iconfont>
-          </TouchableOpacity>
-        </View>
         <View style={styles.header}>
           <Text style={styles.frozenDesc}>冻结金额(元)</Text>
           <Text style={styles.frozenPrice}>100.00</Text>
@@ -95,9 +90,7 @@ class FrozenPrice extends BackPageComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    borderTopWidth: 20,
-    borderColor: '#3d9fa0'
+    backgroundColor: '#FFFFFF'
   },
   header: {
     height: 110,

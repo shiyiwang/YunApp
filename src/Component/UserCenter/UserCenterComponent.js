@@ -28,6 +28,16 @@ import MessageComponent from './Message/MessageComponent';
 const {width} = Dimensions.get('window');
 
 class UserCenterComponent extends Component {
+  static navigationOptions = {
+    tabBarLabel: '我的',
+    tabBarIcon: ({tintColor}) => (
+      <Image
+        source={require('../../../img/usercenter.png')}
+        style={[styles.icon, {tintColor: tintColor}]}
+      />
+    )
+  }
+
   constructor(props){
     super(props)
     this.handleLogin   = this.handleLogin.bind(this);
@@ -44,7 +54,7 @@ class UserCenterComponent extends Component {
   }
 
   handleWallet() {
-    this.props.navigator.push({component: WalletComponent});
+    this.props.navigation.navigate('Wallet')
   }
 
   handlMember() {
@@ -145,6 +155,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     borderTopWidth: 20,
     borderColor: '#FFFFFF'
+  },
+  icon: {
+    height: 25,
+		width: 25,
+		resizeMode: 'contain'
   },
   header: {
     flex: 1,

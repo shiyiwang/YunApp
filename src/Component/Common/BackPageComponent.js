@@ -19,9 +19,9 @@ export default class BackPageComponent extends Component{
   }
 
   _handleBack() {
-    const navigator = this.props.navigator;
-    if (navigator && navigator.getCurrentRoutes().length > 1) {
-      navigator.pop()
+    const navigation = this.props.navigation;
+    if (navigation) {
+      navigation.goBack();
       return true;
     }
     return false;

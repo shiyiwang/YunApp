@@ -15,6 +15,16 @@ import {
 import CommonLoading from '../Common/Loading';
 
 class TououComponent extends Component {
+  static navigationOptions = {
+    tabBarLabel: '投后',
+    tabBarIcon: ({tintColor}) => (
+      <Image
+        source={require('../../../img/touhou.png')}
+        style={[styles.icon, {tintColor: tintColor}]}
+      />
+    )
+  }
+
   constructor(props){
       super(props)
   }
@@ -43,6 +53,11 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 2, height: 2},
     shadowOpacity: 0.5,
     shadowRadius: 3
+  },
+  icon: {
+    height: 26,
+		width: 26,
+		resizeMode: 'contain'
   }
 });
 

@@ -15,6 +15,16 @@ import {
 import CommonLoading from '../Common/Loading';
 
 class BigBombComponent extends Component {
+  static navigationOptions = {
+    tabBarLabel: '融资数据',
+    tabBarIcon: ({tintColor}) => (
+      <Image
+        source={require('../../../img/bigbomb.png')}
+        style={[styles.icon, {tintColor: tintColor}]}
+      />
+    )
+  }
+
   constructor(props){
       super(props)
   }
@@ -43,6 +53,11 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 2, height: 2},
     shadowOpacity: 0.5,
     shadowRadius: 3
+  },
+  icon: {
+    height: 26,
+		width: 26,
+		resizeMode: 'contain'
   }
 });
 

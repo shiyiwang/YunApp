@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 25,
+    width: 0.8 * width,
     fontSize: 16,
     color: '#333333'
   },
