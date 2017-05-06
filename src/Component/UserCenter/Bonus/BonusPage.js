@@ -37,13 +37,13 @@ const data = [
   }
 ]
 
-class BonusComponent extends BackPageComponent {
-  componentWillMount() {
-    StatusBar.setBarStyle('light-content')
+class BonusPage extends BackPageComponent {
+  static navigationOptions = {
+    title: '分红'
   }
 
-  onPressShare() {
-    this.props.navigator.push({component: WebViewPage});
+  componentWillMount() {
+    StatusBar.setBarStyle('light-content')
   }
 
   render(){
@@ -74,7 +74,7 @@ class BonusComponent extends BackPageComponent {
             <Text style={styles.itemPrice}>+{item.price}</Text>
             <TouchableOpacity
               activeOpacity={0.5}
-              onPress={this.onPressShare.bind(this)}>
+              onPress={() => this.props.navigation.navigate('WebViewPage')}>
               <View style={styles.shareIcon}>
                 <Iconfont name="share" size={18} color='#999999'></Iconfont>
               </View>
@@ -152,4 +152,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default BonusComponent
+export default BonusPage

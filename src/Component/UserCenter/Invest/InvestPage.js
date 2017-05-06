@@ -15,7 +15,11 @@ import Iconfont from 'react-native-vector-icons/Iconfont';
 
 import BackPageComponent from '../../Common/BackPageComponent'
 
-class InvestComponent extends BackPageComponent {
+class InvestPage extends BackPageComponent {
+  static navigationOptions = {
+    title: '投资'
+  }
+
   componentWillMount() {
     StatusBar.setBarStyle('light-content')
   }
@@ -187,4 +191,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default InvestComponent
+export default InvestPage

@@ -15,6 +15,10 @@ import CommonLoading from './Loading'
 const {width, height} = Dimensions.get('window');
 
 export default class WebViewPage extends BackPageComponent{
+  static navigationOptions = {
+    header: null
+  }
+
   render(){
     return(
       <View style={{flex: 1, backgroundColor: '#FFFFFF'}}>
@@ -22,6 +26,7 @@ export default class WebViewPage extends BackPageComponent{
           source={{uri: "http://m.yunipo.com/activity/dividendshare?shareuserid=1&projectid=95"}}
           style={styles.webView}
           javaScriptEnabled={true}
+          scalesPageToFit={true}
         />
       </View>
     );

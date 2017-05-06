@@ -12,11 +12,14 @@ import {
 } from 'react-native'
 
 import BackPageComponent from '../../Common/BackPageComponent'
-import AddBankCard from './AddBankCard'
 
 const {width} = Dimensions.get('window');
 
 class BankCard extends BackPageComponent {
+  static navigationOptions = {
+    title: '银行卡'
+  }
+
   constructor(props){
     super(props);
     this.handleAddBankCard = this.handleAddBankCard.bind(this);
@@ -29,7 +32,7 @@ class BankCard extends BackPageComponent {
   }
 
   handleAddBankCard() {
-    this.props.navigator.push({component: AddBankCard});
+    this.props.navigation.navigate('AddBankCard')
   }
 
 

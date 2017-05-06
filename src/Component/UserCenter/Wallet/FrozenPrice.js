@@ -11,10 +11,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-import Iconfont from 'react-native-vector-icons/Iconfont';
-
 import BackPageComponent from '../../Common/BackPageComponent'
-import { naviGoBack } from '../../../Utils/CommonUtils';
 
 const {width} = Dimensions.get('window');
 
@@ -40,17 +37,12 @@ const data = [
 ]
 
 class FrozenPrice extends BackPageComponent {
-  constructor(props){
-      super(props)
-      this.handleBack = this.handleBack.bind(this)
+  static navigationOptions = {
+    title: '冻结金额'
   }
 
-  handleBack() {
-    const {navigator} = this.props
-
-    if (navigator) {
-      naviGoBack(navigator);
-    }
+  constructor(props){
+      super(props)
   }
 
   render(){

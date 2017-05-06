@@ -10,7 +10,11 @@ import {
 
 import BackPageComponent from '../../Common/BackPageComponent'
 
-class OrderComponent extends BackPageComponent {
+class OrderPage extends BackPageComponent {
+  static navigationOptions = {
+    title: '预约'
+  }
+
   render(){
     return (
       <View style={styles.container}>
@@ -36,4 +40,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default OrderComponent
+export default OrderPage

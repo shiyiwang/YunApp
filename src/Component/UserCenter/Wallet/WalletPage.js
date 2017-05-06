@@ -13,45 +13,20 @@ import {
 import BackPageComponent from '../../Common/BackPageComponent'
 import SettingItem from '../../Common/SettingItem';
 import Button from '../../Common/Button';
-import FrozenPrice from './FrozenPrice';
-import Bill from './Bill';
-import Score from './Score';
-import Coupon from './Coupon';
-import BankCard from './BankCard';
 
 const {height} = Dimensions.get('window');
 
-class WalletComponent extends BackPageComponent {
+class WalletPage extends BackPageComponent {
+  static navigationOptions = {
+    title: '钱包'
+  }
+
   constructor(props){
       super(props)
-      this.handleFrozenPrice = this.handleFrozenPrice.bind(this);
-      this.handleBill        = this.handleBill.bind(this);
-      this.handleCoupon      = this.handleCoupon.bind(this);
-      this.handleBankCard    = this.handleBankCard.bind(this);
-      this.handleScore       = this.handleScore.bind(this);
-  }
-
-  handleFrozenPrice() {
-    this.props.navigation.navigate('FrozenPrice')
-  }
-
-  handleBill() {
-    this.props.navigator.push({component: Bill});
-  }
-
-  handleCoupon() {
-    this.props.navigator.push({component: Coupon});
-  }
-
-  handleScore() {
-    this.props.navigator.push({component: Score});
-  }
-
-  handleBankCard() {
-    this.props.navigator.push({component: BankCard});
   }
 
   render(){
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -62,27 +37,27 @@ class WalletComponent extends BackPageComponent {
         <View style={{flex: 1}}>
           <View style={styles.setBox}>
             <SettingItem
-              handlePress={this.handleFrozenPrice}
+              handlePress={() => navigation.navigate('FrozenPrice')}
               title='冻结金额'
             />
             <SettingItem
-              handlePress={this.handleBill}
+              handlePress={() => navigation.navigate('Bill')}
               title='对账单'
               noBorder={true}
             />
           </View>
           <View style={styles.setBox}>
             <SettingItem
-              handlePress={this.handleCoupon}
+              handlePress={() => navigation.navigate('Coupon')}
               title='优惠券'
               desc='2 张'
             />
             <SettingItem
-              handlePress={this.handleBankCard}
+              handlePress={() => navigation.navigate('BankCard')}
               title='银行卡'
             />
             <SettingItem
-              handlePress={this.handleScore}
+              handlePress={() => navigation.navigate('Score')}
               title='积分'
               desc='41484'
               noBorder={true}
@@ -156,4 +131,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default WalletComponent
+export default WalletPage

@@ -36,7 +36,11 @@ const data = [
   },
 ]
 
-class BonusComponent extends BackPageComponent {
+class MessagePage extends BackPageComponent {
+  static navigationOptions = {
+    title: '消息'
+  }
+
   constructor(props) {
     super(props);
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -158,4 +162,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default BonusComponent
+export default MessagePage

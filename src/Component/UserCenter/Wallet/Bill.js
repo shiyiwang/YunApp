@@ -13,6 +13,10 @@ import {Select, Option} from "react-native-chooser";
 import BackPageComponent from '../../Common/BackPageComponent'
 
 class Bill extends BackPageComponent {
+  static navigationOptions = {
+    title: '对账单'
+  }
+
   constructor(props){
       super(props)
       this.onSelect = this.onSelect.bind(this);

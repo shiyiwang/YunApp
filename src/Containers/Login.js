@@ -12,27 +12,23 @@ import {
 } from 'react-native';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import CustomerTabBar from './CustomerTabBar';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Sae, Hideo, Kohana } from 'react-native-textinput-effects';
 
-import Test from './Test';
+import CustomerTabBar from '../Component/Login/CustomerTabBar';
 
-const logoImg = require('../../../img/yunipoLogo.png');
-
-
-class LoginComponent extends Component {
+class Login extends Component {
   constructor(props){
       super(props)
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={logoImg} style={styles.logo} />
+          <Image source={require('../../img/yunipoLogo.png')} style={styles.logo} />
         </View>
-
         <ScrollableTabView
           initialPage={0}
           renderTabBar={() => <CustomerTabBar />}
@@ -49,7 +45,7 @@ class LoginComponent extends Component {
                 labelStyle={{ color: '#999999', fontSize: 14 }}
                 inputStyle={{ color: '#666666', fontSize: 14 }}
               />
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
                 <Text style={{fontSize: 14, color: '#FFFFFF'}}>下一步</Text>
               </TouchableOpacity>
             </View>
@@ -125,4 +121,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginComponent;
+export default Login;

@@ -15,24 +15,17 @@ import {
 
 import Iconfont from 'react-native-vector-icons/Iconfont';
 
-import Button from '../Common/Button'
-import LoginComponent from '../Login/LoginComponent';
-import SettingItem from '../Common/SettingItem';
-import WalletComponent from './Wallet/WalletComponent';
-import MemberComponent from './Member/MemberComponent';
-import OrderComponent from './Order/OrderComponent';
-import InvestComponent from './Invest/InvestComponent';
-import BonusComponent from './Bonus/BonusComponent';
-import MessageComponent from './Message/MessageComponent';
+import Button from '../Component/Common/Button'
+import SettingItem from '../Component/Common/SettingItem';
 
 const {width} = Dimensions.get('window');
 
-class UserCenterComponent extends Component {
+class UserCenter extends Component {
   static navigationOptions = {
     tabBarLabel: '我的',
     tabBarIcon: ({tintColor}) => (
       <Image
-        source={require('../../../img/usercenter.png')}
+        source={require('../../img/usercenter.png')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
     )
@@ -40,48 +33,14 @@ class UserCenterComponent extends Component {
 
   constructor(props){
     super(props)
-    this.handleLogin   = this.handleLogin.bind(this);
-    this.handleWallet  = this.handleWallet.bind(this);
-    this.handlMember   = this.handlMember.bind(this);
-    this.handleOrder   = this.handleOrder.bind(this);
-    this.handleInvest  = this.handleInvest.bind(this);
-    this.handleBonus   = this.handleBonus.bind(this);
-    this.handleMessage = this.handleMessage.bind(this);
-  }
-
-  handleLogin() {
-    this.props.navigator.push({component: LoginComponent});
-  }
-
-  handleWallet() {
-    this.props.navigation.navigate('Wallet')
-  }
-
-  handlMember() {
-    this.props.navigator.push({component: MemberComponent});
-  }
-
-  handleOrder() {
-    this.props.navigator.push({component: OrderComponent});
-  }
-
-  handleInvest() {
-    this.props.navigator.push({component: InvestComponent});
-  }
-
-  handleBonus() {
-    this.props.navigator.push({component: BonusComponent});
-  }
-
-  handleMessage() {
-    this.props.navigator.push({component: MessageComponent});
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity onPress={this.handleLogin}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Image
               style={styles.face}
               source={{uri: 'http://static.yunipo.com/images/project/covers/20170316/58ca82cf30a62.jpg'}}
@@ -108,29 +67,29 @@ class UserCenterComponent extends Component {
         </View>
         <View style={styles.setBox}>
           <SettingItem
-            handlePress={this.handleWallet}
+            handlePress={() => navigation.navigate('WalletPage')}
             title='钱包'
             iconName='wallet'
           />
           <SettingItem
-            handlePress={this.handlMember}
+            handlePress={() => navigation.navigate('MemberPage')}
             title='会员'
             desc='普通投资人'
             iconName='member'
           />
           <SettingItem
-            handlePress={this.handleOrder}
+            handlePress={() => navigation.navigate('OrderPage')}
             title='预约'
             desc='暂无预约资格'
             iconName='order'
           />
           <SettingItem
-            handlePress={this.handleInvest}
+            handlePress={() => navigation.navigate('InvestPage')}
             title='投资'
             iconName='invest'
           />
           <SettingItem
-            handlePress={this.handleBonus}
+            handlePress={() => navigation.navigate('BonusPage')}
             title='分红'
             iconName='bonus'
             noBorder={true}
@@ -138,7 +97,7 @@ class UserCenterComponent extends Component {
         </View>
         <View style={styles.setBox}>
           <SettingItem
-            handlePress={this.handleMessage}
+            handlePress={() => navigation.navigate('MessagePage')}
             title='消息'
             iconName='message'
             noBorder={true}
@@ -216,4 +175,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default UserCenterComponent;
+export default UserCenter;

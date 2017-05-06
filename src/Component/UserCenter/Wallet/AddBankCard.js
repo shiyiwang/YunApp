@@ -13,7 +13,6 @@ import {
 import BackPageComponent from '../../Common/BackPageComponent'
 import Button from '../../Common/Button'
 import SelectBankModal from '../../Common/SelectBankModal'
-import { naviGoBack } from '../../../Utils/CommonUtils';
 
 const {width} = Dimensions.get('window');
 
@@ -31,9 +30,7 @@ class AddBankCard extends BackPageComponent {
   handleAdd() {
     const {navigator} = this.props
 
-    if (navigator) {
-      naviGoBack(navigator);
-    }
+    this.props.navigation.goBack()
   }
 
   render(){
@@ -67,9 +64,10 @@ class AddBankCard extends BackPageComponent {
                 optionStyle={{padding: 12}}
                 onChange={(option)=>{ this.setState({bank:option.label})}}>
                 <TextInput
-                    style={{height: 25, width: 0.8 * width,fontSize: 16, color: '#333333'}}
+                    style={styles.textInput}
                     editable={false}
                     placeholder="请选择银行"
+                    underlineColorAndroid='transparent'
                     value={this.state.bank} />
                 </SelectBankModal>
             </View>
@@ -84,6 +82,7 @@ class AddBankCard extends BackPageComponent {
                 onChangeText={(cardNum) => this.setState({cardNum})}
                 value={this.state.cardNum}
                 placeholder='请输入银行卡号'
+                underlineColorAndroid='transparent'
               />
             </View>
           </View>
@@ -131,6 +130,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 5,
     paddingRight: 5,
+    alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
     borderBottomWidth: 1,
@@ -154,6 +154,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   textInput: {
+    paddingVertical: 0,
     height: 25,
     width: 0.8 * width,
     fontSize: 16,

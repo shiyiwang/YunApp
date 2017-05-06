@@ -13,18 +13,18 @@ import {
 } from 'react-native';
 
 //轮播图
-import HomeSwiper from './HomeSwiper';
+import HomeSwiper from '../Component/Home/HomeSwiper';
 //产品列表
-import HomeScrollList from './HomeScrollList';
+import HomeScrollList from '../Component/Home/HomeScrollList';
 //加载动图
-import CommonLoading from '../Common/Loading';
+import CommonLoading from '../Component/Common/Loading';
 
-class HomeComponent extends Component {
+class Home extends Component {
   static navigationOptions = {
     tabBarLabel: '推荐',
     tabBarIcon: ({tintColor}) => (
       <Image
-        source={require('../../../img/home.png')}
+        source={require('../../img/home.png')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
     )
@@ -88,7 +88,6 @@ class HomeComponent extends Component {
       return (
         <HomeSwiper
           data = {this.state.swiperData}
-          navigator={this.props.navigator}
         />
       )
     }else{
@@ -103,7 +102,6 @@ class HomeComponent extends Component {
       return (
         <HomeScrollList
           data = {this.state.scrollListData}
-          navigator={this.props.navigator}
         />
       )
     }else{
@@ -123,4 +121,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeComponent;
+export default Home;

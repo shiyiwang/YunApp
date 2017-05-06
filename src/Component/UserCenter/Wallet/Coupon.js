@@ -24,6 +24,10 @@ import Button from '../../Common/Button'
 const {height, width} = Dimensions.get('window');
 
 class Coupon extends BackPageComponent {
+  static navigationOptions = {
+    title: '优惠券'
+  }
+
   constructor(props){
     super(props);
     this.state = {

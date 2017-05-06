@@ -12,14 +12,14 @@ import {
 } from 'react-native';
 
 //加载动图
-import CommonLoading from '../Common/Loading';
+import CommonLoading from '../Component/Common/Loading';
 
-class TououComponent extends Component {
+class BigBomb extends Component {
   static navigationOptions = {
-    tabBarLabel: '投后',
+    tabBarLabel: '融资数据',
     tabBarIcon: ({tintColor}) => (
       <Image
-        source={require('../../../img/touhou.png')}
+        source={require('../../img/bigbomb.png')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
     )
@@ -33,7 +33,7 @@ class TououComponent extends Component {
     return (
       <ScrollView style={{paddingTop: 20}}>
         <View style={styles.card}>
-            <Text>投后</Text>
+            <Text>大爆炸</Text>
         </View>
       </ScrollView>
     );
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TououComponent;
+export default BigBomb;

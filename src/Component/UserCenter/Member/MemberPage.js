@@ -17,7 +17,10 @@ import BackPageComponent from '../../Common/BackPageComponent'
 
 const {width} = Dimensions.get('window');
 
-class MemberComponent extends BackPageComponent {
+class MemberPage extends BackPageComponent {
+  static navigationOptions = {
+    title: '会员'
+  }
 
   constructor() {
     super()
@@ -271,4 +274,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default MemberComponent
+export default MemberPage

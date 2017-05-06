@@ -43,6 +43,10 @@ const data = [
 ]
 
 class Score extends BackPageComponent {
+  static navigationOptions = {
+    title: '我的积分'
+  }
+
   render(){
     return (
       <View style={styles.container}>
