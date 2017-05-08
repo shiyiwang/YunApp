@@ -19,7 +19,7 @@ class MemberPage extends Component {
   static navigationOptions = {
     title: '会员',
     headerTintColor: '#FFFFFF',
-    headerStyle: {backgroundColor: '#382f26'}
+    headerStyle: {backgroundColor: '#382f26', shadowOpacity: 0}
   }
 
   constructor() {

@@ -40,7 +40,7 @@ class InvestPage extends Component {
   static navigationOptions = {
     title: '投资',
     headerTitleStyle: {color: '#FFFFFF'},
-    headerStyle: {backgroundColor: '#5067a3', borderBottomWidth: 0, borderBottomColor: '#5067a3'},
+    headerStyle: {backgroundColor: '#5067a3', shadowOpacity: 0},
     headerTintColor: '#FFFFFF'
   }
 
