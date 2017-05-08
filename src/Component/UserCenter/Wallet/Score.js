@@ -6,7 +6,7 @@ import {
   View,
   StyleSheet,
   Text,
-  ScrollView,
+  ListView,
   Dimensions
 } from 'react-native'
 
@@ -44,61 +44,65 @@ const data = [
 
 class Score extends BackPageComponent {
   static navigationOptions = {
-    title: '我的积分'
+    title: '我的积分',
+    headerStyle: {backgroundColor: '#5ba143', shadowOpacity: 0},
+    headerTintColor: '#FFFFFF',
+    headerRight: (<Button
+      text="积分规则"
+      btnStyle={{backgroundColor: 'rgba(255,255,255,0)', height: 44, marginRight: 10}}
+      textStyle={{color: '#FFFFFF', fontSize: 14}}
+      onPress={() => console.log('btn click')}
+    />)
+  }
+
+  constructor(props) {
+    super(props);
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(data),
+    };
   }
 
   render(){
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.scoreTitle}>我的积分</Text>
           <Text style={styles.score}>33</Text>
           <Button
             text="积分商城"
-            btnStyle={{backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 10, width: 70, height: 22}}
-            textStyle={{color: '#fff71b', fontSize: 12}}
+            btnStyle={{backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 12, width: 80, height: 24}}
+            textStyle={{color: '#fff71b', fontSize: 14}}
             onPress={() => console.log('btn click')}
           />
-          <View style={styles.scoreRuleBtn}>
-            <Button
-              text="积分规则"
-              btnStyle={{backgroundColor: 'rgba(255,255,255,0)'}}
-              textStyle={{color: '#FFFFFF', fontSize: 12}}
-              onPress={() => console.log('btn click')}
-            />
-          </View>
         </View>
         <View style={styles.itemHeader}>
           <View style={styles.itemHeaderTextBox}>
             <Text style={styles.itemHeaderText}>积分明细</Text>
           </View>
         </View>
-        <ScrollView style={styles.itemBox}>
-          {this._renderItem()}
-        </ScrollView>
+        <ListView
+          style={styles.itemBox}
+          dataSource={this.state.dataSource}
+          renderRow={this._renderRow.bind(this)}
+        />
       </View>
     )
   }
 
-  _renderItem() {
-    let itemList = []
-
-    data.map((item, i) => {
-      let priceStyle = item.title === '减少' ? {color: '#333333'} : {}
-      itemList.push(
-        <View style={styles.item} key={i}>
-          <View style={styles.leftBox}>
-            <Text style={styles.itemTitle}>{item.title}</Text>
-            <Text style={styles.itemTime}>{item.time}</Text>
-            <Text style={styles.itemDesc}>{item.desc}</Text>
-          </View>
-          <Text style={[styles.itemPrice, priceStyle]}>{item.price}</Text>
+  _renderRow(rowData, sectionID) {
+    let priceStyle = rowData.title === '减少' ? {color: '#333333'} : {}
+    return (
+      <View style={styles.item} key={sectionID}>
+        <View style={styles.leftBox}>
+          <Text style={styles.itemTitle}>{rowData.title}</Text>
+          <Text style={styles.itemTime}>{rowData.time}</Text>
+          <Text style={styles.itemDesc}>{rowData.desc}</Text>
         </View>
-      )
-    })
-
-    return itemList
+        <Text style={[styles.itemPrice, priceStyle]}>{rowData.price}</Text>
+      </View>
+    )
   }
+
 }
 
 const styles = StyleSheet.create({
@@ -107,8 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF'
   },
   header: {
-    height: 160,
-    paddingTop: 45,
+    height: 120,
     backgroundColor: '#5ba143',
     justifyContent: 'center',
     alignItems: 'center'
@@ -118,7 +121,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF'
   },
   score: {
-    fontSize: 36,
+    fontSize: 38,
     color: '#FFFFFF',
     marginBottom: 15,
     marginTop: 5

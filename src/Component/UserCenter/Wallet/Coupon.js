@@ -5,6 +5,7 @@ import React,{Component} from 'react'
 import {
   View,
   ScrollView,
+  ListView,
   StyleSheet,
   Text,
   TextInput,
@@ -23,31 +24,40 @@ import Button from '../../Common/Button'
 
 const {height, width} = Dimensions.get('window');
 
+const data = {
+  unused: [
+    {price: '3000', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资10万抵扣3000元', type: 'cash', status: 'unused'},
+    {price: '100', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资1万抵扣100元', type: 'cash', status: 'unused'},
+    {price: '', priceDesc: '免费提现劵', time: '2017-10-17 00:00:00', desc: '可用于免费提现一次', type: 'free', status: 'unused'},
+  ],
+  used: [
+    {price: '3000', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资10万抵扣3000元', status: 'used'},
+    {price: '', priceDesc: '免费提现劵', time: '2017-10-17 00:00:00', desc: '可用于免费提现一次', type: 'free', status: 'used'},
+  ],
+  expire: [
+    {price: '100', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资1万抵扣100元', status: 'expire'},
+    {price: '', priceDesc: '免费提现劵', time: '2017-10-17 00:00:00', desc: '可用于免费提现一次', type: 'free', status: 'expire'},
+    {price: '300', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资1万抵扣300元', status: 'expire'},
+    {price: '200', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资1万抵扣200元', status: 'expire'}
+  ]
+}
+
 class Coupon extends BackPageComponent {
   static navigationOptions = {
-    title: '优惠券'
+    title: '优惠券',
+    headerStyle: {backgroundColor: '#FF6700'},
+    headerTintColor: '#FFFFFF'
   }
 
   constructor(props){
     super(props);
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       isModalVisible: false,
       text: null,
-      unused: [
-        {price: '3000', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资10万抵扣3000元', type: 'cash'},
-        {price: '100', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资1万抵扣100元', type: 'cash'},
-        {price: '', priceDesc: '免费提现劵', time: '2017-10-17 00:00:00', desc: '可用于免费提现一次', type: 'free'},
-      ],
-      used: [
-        {price: '3000', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资10万抵扣3000元'},
-        {price: '', priceDesc: '免费提现劵', time: '2017-10-17 00:00:00', desc: '可用于免费提现一次', type: 'free'},
-      ],
-      expire: [
-        {price: '100', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资1万抵扣100元'},
-        {price: '', priceDesc: '免费提现劵', time: '2017-10-17 00:00:00', desc: '可用于免费提现一次', type: 'free'},
-        {price: '300', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资1万抵扣300元'},
-        {price: '200', priceDesc: '现金抵扣券', time: '2017-10-17 00:00:00', desc: '投资1万抵扣200元'}
-      ]
+      unusedDataSource: ds.cloneWithRows(data.unused),
+      usedDataSource: ds.cloneWithRows(data.used),
+      expireDataSource: ds.cloneWithRows(data.expire)
     }
   }
 
@@ -70,61 +80,25 @@ class Coupon extends BackPageComponent {
           renderTabBar={() => <CouponTabBar />}
           >
           <View tabLabel="未使用" style={styles.cardBox}>
-            <ScrollView>
-              {
-                this.state.unused.map((item, index) => {
-                  return (
-                    <TicketItem
-                      price={item.price}
-                      priceDesc={item.priceDesc}
-                      time={item.time}
-                      desc={item.desc}
-                      type={item.type}
-                      onPress={() => {this.setModalVisible(true)}}
-                      key={index}
-                    />
-                  )
-                })
-              }
-            </ScrollView>
+            <ListView
+              style={styles.contentList}
+              dataSource={this.state.unusedDataSource}
+              renderRow={this._renderRow.bind(this)}
+            />
           </View>
           <View tabLabel="已使用" style={styles.cardBox}>
-            <ScrollView>
-              {
-                this.state.used.map((item, index) => {
-                  return (
-                    <TicketItem
-                      price={item.price}
-                      priceDesc={item.priceDesc}
-                      time={item.time}
-                      desc={item.desc}
-                      type={item.type}
-                      status='used'
-                      key={index}
-                    />
-                  )
-                })
-              }
-            </ScrollView>
+            <ListView
+              style={styles.contentList}
+              dataSource={this.state.usedDataSource}
+              renderRow={this._renderRow.bind(this)}
+            />
           </View>
           <View tabLabel="已过期" style={styles.cardBox}>
-            <ScrollView>
-              {
-                this.state.expire.map((item, index) => {
-                  return (
-                    <TicketItem
-                      price={item.price}
-                      priceDesc={item.priceDesc}
-                      time={item.time}
-                      desc={item.desc}
-                      type={item.type}
-                      status='expire'
-                      key={index}
-                    />
-                  )
-                })
-              }
-            </ScrollView>
+            <ListView
+              style={styles.contentList}
+              dataSource={this.state.expireDataSource}
+              renderRow={this._renderRow.bind(this)}
+            />
           </View>
         </ScrollableTabView>
         <Modal isVisible={this.state.isModalVisible} style={{alignItems: 'center', justifyContent: 'center', borderRadius: 3}}>
@@ -155,13 +129,27 @@ class Coupon extends BackPageComponent {
       </View>
     )
   }
+
+  _renderRow(rowData, sectionID) {
+    return (
+      <TicketItem
+        price={rowData.price}
+        priceDesc={rowData.priceDesc}
+        time={rowData.time}
+        desc={rowData.desc}
+        type={rowData.type}
+        status={rowData.status}
+        key={sectionID}
+        onPress={this._giveTicket.bind(this)}
+      />
+    )
+  }
+
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderTopWidth: 20,
-    borderTopColor: '#FFFFFF',
     backgroundColor: '#F2F2F2',
     alignItems: 'center',
     justifyContent: 'center'

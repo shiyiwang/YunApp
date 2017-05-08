@@ -39,7 +39,9 @@ const data = [
 
 class BonusPage extends BackPageComponent {
   static navigationOptions = {
-    title: '分红'
+    title: '分红',
+    headerTintColor: '#FFFFFF',
+    headerStyle: {backgroundColor: '#d64e4b', shadowOpacity: 0}
   }
 
   componentWillMount() {
@@ -91,12 +93,10 @@ class BonusPage extends BackPageComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    borderTopWidth: 20,
-    borderColor: '#d64e4b'
+    backgroundColor: '#FFFFFF'
   },
   header: {
-    height: 120,
+    height: 110,
     backgroundColor: '#d64e4b',
     paddingLeft: 15,
     paddingRight: 15,

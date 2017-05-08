@@ -7,7 +7,8 @@ import {
   StyleSheet,
   Text,
   ScrollView,
-  Dimensions
+  Dimensions,
+  StatusBar
 } from 'react-native'
 
 import BackPageComponent from '../../Common/BackPageComponent'
@@ -18,11 +19,17 @@ const {height} = Dimensions.get('window');
 
 class WalletPage extends BackPageComponent {
   static navigationOptions = {
-    title: '钱包'
+    title: '钱包',
+    headerStyle: {backgroundColor: '#FF6700', shadowOpacity: 0},
+    headerTintColor: '#FFFFFF'
   }
 
   constructor(props){
       super(props)
+  }
+
+  componentWillMount() {
+    StatusBar.setBarStyle('light-content')
   }
 
   render(){
@@ -66,13 +73,13 @@ class WalletPage extends BackPageComponent {
           <View style={styles.bottomMenu}>
             <Button
               text='充值'
-              btnStyle={{backgroundColor: '#FFFFFF', borderRadius: 0, borderRightWidth: 1, borderColor: '#DDDDDD'}}
+              btnStyle={{flex: 1, backgroundColor: '#FFFFFF', borderRadius: 0, borderRightWidth: 1, borderColor: '#DDDDDD'}}
               textStyle={{color: '#FF6700', fontSize: 16}}
               onPress={() => console.log('btn click')}
             />
             <Button
               text='提现'
-              btnStyle={{backgroundColor: '#FFFFFF', borderRadius: 0}}
+              btnStyle={{flex: 1, backgroundColor: '#FFFFFF', borderRadius: 0}}
               textStyle={{color: '#FF6700', fontSize: 16}}
               onPress={() => console.log('btn click')}
             />
@@ -86,13 +93,11 @@ class WalletPage extends BackPageComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2',
-    borderTopWidth: 20,
-    borderColor: '#fe8330'
+    backgroundColor: '#F2F2F2'
   },
   header: {
-    height: 120,
-    backgroundColor: '#fe8330',
+    height: 110,
+    backgroundColor: '#FF6700',
     paddingLeft: 15,
     paddingRight: 15,
     justifyContent: 'center'

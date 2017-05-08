@@ -35,6 +35,7 @@ const HomeNavigator = TabNavigator({
 	animationEnabled: true, // 切换页面时显示动画
   tabBarPosition: 'bottom', // 显示在底端，android 默认是显示在页面顶端的
   swipeEnabled: true, // 左右滑动
+  lazyLoad: true, // 懒加载
   tabBarOptions: {
     activeTintColor: '#FF6700', // 文字和图片选中颜色
     inactiveTintColor: '#999999', // 文字和图片默认颜色

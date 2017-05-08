@@ -6,9 +6,8 @@ import {
   View,
   StyleSheet,
   Text,
-  ScrollView,
-  Dimensions,
-  TouchableOpacity
+  ListView,
+  Dimensions
 } from 'react-native'
 
 import BackPageComponent from '../../Common/BackPageComponent'
@@ -38,11 +37,18 @@ const data = [
 
 class FrozenPrice extends BackPageComponent {
   static navigationOptions = {
-    title: '冻结金额'
+    title: '冻结金额',
+    headerTitleStyle: {color: '#FFFFFF'},
+    headerStyle: {backgroundColor: '#3d9fa0', shadowOpacity: 0},
+    headerTintColor: '#FFFFFF'
   }
 
   constructor(props){
       super(props)
+      var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+      this.state = {
+        dataSource: ds.cloneWithRows(data),
+      }
   }
 
   render(){
@@ -52,31 +58,28 @@ class FrozenPrice extends BackPageComponent {
           <Text style={styles.frozenDesc}>冻结金额(元)</Text>
           <Text style={styles.frozenPrice}>100.00</Text>
         </View>
-        <ScrollView style={styles.itemBox}>
-          {this._renderItem()}
-        </ScrollView>
+        <ListView
+          style={styles.itemBox}
+          dataSource={this.state.dataSource}
+          renderRow={this._renderRow.bind(this)}
+        />
       </View>
     )
   }
 
-  _renderItem() {
-    let itemList = []
-
-    data.map((item, i) => {
-      itemList.push(
-        <View style={styles.item} key={i}>
-          <View style={styles.leftBox}>
-            <Text style={styles.itemTitle}>{item.title}</Text>
-            <Text style={styles.itemTime}>{item.time}</Text>
-            <Text style={styles.itemDesc}>{item.desc}</Text>
-          </View>
-          <Text style={styles.itemPrice}>{item.price}</Text>
+  _renderRow(rowData) {
+    return (
+      <View style={styles.item}>
+        <View style={styles.leftBox}>
+          <Text style={styles.itemTitle}>{rowData.title}</Text>
+          <Text style={styles.itemTime}>{rowData.time}</Text>
+          <Text style={styles.itemDesc}>{rowData.desc}</Text>
         </View>
-      )
-    })
-
-    return itemList
+        <Text style={styles.itemPrice}>{rowData.price}</Text>
+      </View>
+    )
   }
+  
 }
 
 const styles = StyleSheet.create({

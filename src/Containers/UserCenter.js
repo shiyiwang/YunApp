@@ -10,7 +10,8 @@ import {
   Text,
   ScrollView,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native';
 
 import Iconfont from 'react-native-vector-icons/Iconfont';
@@ -33,6 +34,10 @@ class UserCenter extends Component {
 
   constructor(props){
     super(props)
+  }
+
+  componentWillMount() {
+    StatusBar.setBarStyle('light-content')
   }
 
   render() {
@@ -123,7 +128,7 @@ const styles = StyleSheet.create({
   header: {
     flex: 1,
     height: 140,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255,255,255,0.05)',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -145,13 +150,17 @@ const styles = StyleSheet.create({
   },
   chargeBox: {
     flex: 1,
-    height: 90,
-    backgroundColor: '#fe8330',
+    height: 100,
+    backgroundColor: '#FF6700',
     paddingLeft: 10,
     paddingRight: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    shadowColor: '#ccc',
+    shadowOffset: {width: 2, height: 2},
+    shadowOpacity: 0.5,
+    shadowRadius: 3
   },
   chargeDesc: {
     fontSize: 12,

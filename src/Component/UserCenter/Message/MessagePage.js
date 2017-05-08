@@ -38,7 +38,9 @@ const data = [
 
 class MessagePage extends BackPageComponent {
   static navigationOptions = {
-    title: '消息'
+    title: '消息',
+    headerTintColor: '#FFFFFF',
+    headerStyle: {backgroundColor: '#FF6700'}
   }
 
   constructor(props) {
@@ -47,10 +49,6 @@ class MessagePage extends BackPageComponent {
     this.state = {
       dataSource: ds.cloneWithRows(data),
     };
-  }
-
-  componentWillMount() {
-    StatusBar.setBarStyle('default')
   }
 
   render(){
@@ -62,7 +60,7 @@ class MessagePage extends BackPageComponent {
             <Button
               text='全部标为已读'
               btnStyle={{backgroundColor: '#f1f1f1', width: 100, height: 30, borderRadius: 3, borderRightWidth: 1, borderColor: '#f1f1f1'}}
-              textStyle={{color: '#666666', fontSize: 14}}
+              textStyle={{color: '#333333', fontSize: 14}}
               onPress={() => console.log('btn click')}
             />
           </View>
@@ -94,9 +92,7 @@ class MessagePage extends BackPageComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2',
-    borderTopWidth: 20,
-    borderColor: '#F2F2F2'
+    backgroundColor: '#F2F2F2'
   },
   header: {
     height: 50,
@@ -109,7 +105,7 @@ const styles = StyleSheet.create({
   },
   headerDesc: {
     fontSize: 14,
-    color: '#666666'
+    color: '#333333'
   },
   btnBox: {
     width: 95,
@@ -152,7 +148,7 @@ const styles = StyleSheet.create({
   },
   infoDesc: {
     fontSize: 13,
-    color: '#999999',
+    color: '#666666',
     lineHeight: 14
   },
   infoTime: {

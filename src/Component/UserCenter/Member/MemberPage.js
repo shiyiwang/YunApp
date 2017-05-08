@@ -19,7 +19,9 @@ const {width} = Dimensions.get('window');
 
 class MemberPage extends BackPageComponent {
   static navigationOptions = {
-    title: '会员'
+    title: '会员',
+    headerTintColor: '#FFFFFF',
+    headerStyle: {backgroundColor: '#382f26'}
   }
 
   constructor() {
@@ -133,12 +135,10 @@ class MemberPage extends BackPageComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2',
-    borderTopWidth: 20,
-    borderColor: '#382f26'
+    backgroundColor: '#F2F2F2'
   },
   header: {
-    height: 150,
+    height: 130,
     backgroundColor: '#382f26',
     alignItems: 'center',
     justifyContent: 'center',

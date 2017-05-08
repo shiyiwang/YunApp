@@ -6,7 +6,7 @@ import {
   View,
   StyleSheet,
   Text,
-  ScrollView,
+  ListView,
   Image,
   StatusBar
 } from 'react-native'
@@ -15,13 +15,43 @@ import Iconfont from 'react-native-vector-icons/Iconfont';
 
 import BackPageComponent from '../../Common/BackPageComponent'
 
+const data = [
+  {
+    imgSrc: 'http://static2.yunipo.com/images/project/covers/20170320/58cfa8b653517.jpg',
+    title: '【双子星-千宙】合投计划',
+    count: 10
+  },
+  {
+    imgSrc: 'http://static2.yunipo.com/images/project/covers/20170214/58a267db13d63.jpg',
+    title: '云岸金服体验项目',
+    count: 3
+  },
+  {
+    imgSrc: 'http://static2.yunipo.com/images/project/covers/20170320/58cfa8b653517.jpg',
+    title: '【双子星-千宙】合投计划',
+    count: 10
+  },
+  {
+    imgSrc: 'http://static2.yunipo.com/images/project/covers/20170214/58a267db13d63.jpg',
+    title: '云岸金服体验项目',
+    count: 3
+  }
+]
+
 class InvestPage extends BackPageComponent {
   static navigationOptions = {
-    title: '投资'
+    title: '投资',
+    headerTitleStyle: {color: '#FFFFFF'},
+    headerStyle: {backgroundColor: '#5067a3', borderBottomWidth: 0, borderBottomColor: '#5067a3'},
+    headerTintColor: '#FFFFFF'
   }
 
-  componentWillMount() {
-    StatusBar.setBarStyle('light-content')
+  constructor(props) {
+    super(props);
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(data),
+    };
   }
 
   render(){
@@ -46,50 +76,42 @@ class InvestPage extends BackPageComponent {
           <View style={styles.contentTitle}>
             <Text style={styles.contentTitleText}>投资资产明细</Text>
           </View>
-          <ScrollView style={styles.contentList}>
-            <View style={styles.contentItem}>
-              <View style={styles.imgBox}>
-                <Image
-                  source={{uri: 'http://static2.yunipo.com/images/project/covers/20170320/58cfa8b653517.jpg'}}
-                  style={{width: 108, height: 60}}
-                />
-              </View>
-              <View style={styles.infoBox}>
-                <Text style={styles.infoTitle}>【双子星-千宙】合投计划</Text>
-                <Text style={styles.infoDesc}>持有份额：10份</Text>
-              </View>
-              <View style={styles.contentIcon}>
-                <Iconfont name="right-arrow" size={18} color='#999999'></Iconfont>
-              </View>
-            </View>
-            <View style={styles.contentItem}>
-              <View style={styles.imgBox}>
-                <Image
-                  source={{uri: 'http://static2.yunipo.com/images/project/covers/20170214/58a267db13d63.jpg'}}
-                  style={{width: 108, height: 60}}
-                />
-              </View>
-              <View style={styles.infoBox}>
-                <Text style={styles.infoTitle}>云岸金服体验项目</Text>
-                <Text style={styles.infoDesc}>持有份额：3份</Text>
-              </View>
-              <View style={styles.contentIcon}>
-                <Iconfont name="right-arrow" size={18} color='#999999'></Iconfont>
-              </View>
-            </View>
-          </ScrollView>
+          <ListView
+            style={styles.contentList}
+            dataSource={this.state.dataSource}
+            renderRow={this._renderRow.bind(this)}
+          />
         </View>
       </View>
     )
   }
+
+  _renderRow(rowData) {
+    return (
+      <View style={styles.contentItem}>
+        <View style={styles.imgBox}>
+          <Image
+            source={{uri: rowData.imgSrc}}
+            style={{width: 108, height: 60}}
+          />
+        </View>
+        <View style={styles.infoBox}>
+          <Text style={styles.infoTitle}>{rowData.title}</Text>
+          <Text style={styles.infoDesc}>持有份额：{rowData.count}份</Text>
+        </View>
+        <View style={styles.contentIcon}>
+          <Iconfont name="right-arrow" size={18} color='#999999'></Iconfont>
+        </View>
+      </View>
+    )
+  }
+
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    borderTopWidth: 20,
-    borderColor: '#5067a3'
   },
   header: {
     height: 130,

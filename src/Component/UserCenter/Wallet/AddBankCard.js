@@ -17,6 +17,12 @@ import SelectBankModal from '../../Common/SelectBankModal'
 const {width} = Dimensions.get('window');
 
 class AddBankCard extends BackPageComponent {
+  static navigationOptions = {
+    title: '添加银行卡',
+    headerStyle: {backgroundColor: '#fa7642'},
+    headerTintColor: '#FFFFFF'
+  }
+
   constructor(props){
     super(props)
     this.handleAdd = this.handleAdd.bind(this)

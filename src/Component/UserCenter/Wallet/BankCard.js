@@ -17,7 +17,9 @@ const {width} = Dimensions.get('window');
 
 class BankCard extends BackPageComponent {
   static navigationOptions = {
-    title: '银行卡'
+    title: '银行卡',
+    headerStyle: {backgroundColor: '#fa7642'},
+    headerTintColor: '#FFFFFF'
   }
 
   constructor(props){
@@ -75,7 +77,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 20,
     backgroundColor: '#F2F2F2'
   },
   cardBox: {
