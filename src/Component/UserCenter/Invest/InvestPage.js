@@ -13,8 +13,6 @@ import {
 
 import Iconfont from 'react-native-vector-icons/Iconfont';
 
-import BackPageComponent from '../../Common/BackPageComponent'
-
 const data = [
   {
     imgSrc: 'http://static2.yunipo.com/images/project/covers/20170320/58cfa8b653517.jpg',
@@ -38,7 +36,7 @@ const data = [
   }
 ]
 
-class InvestPage extends BackPageComponent {
+class InvestPage extends Component {
   static navigationOptions = {
     title: '投资',
     headerTitleStyle: {color: '#FFFFFF'},

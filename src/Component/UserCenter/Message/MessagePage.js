@@ -13,7 +13,6 @@ import {
 } from 'react-native'
 
 import Button from '../../Common/Button';
-import BackPageComponent from '../../Common/BackPageComponent'
 
 const {width} = Dimensions.get('window');
 
@@ -36,7 +35,7 @@ const data = [
   },
 ]
 
-class MessagePage extends BackPageComponent {
+class MessagePage extends Component {
   static navigationOptions = {
     title: '消息',
     headerTintColor: '#FFFFFF',

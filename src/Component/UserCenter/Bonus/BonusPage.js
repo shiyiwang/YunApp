@@ -14,7 +14,6 @@ import {
 
 import Iconfont from 'react-native-vector-icons/Iconfont';
 
-import BackPageComponent from '../../Common/BackPageComponent'
 import WebViewPage from '../../Common/WebViewPage'
 
 const {width} = Dimensions.get('window');
@@ -37,7 +36,7 @@ const data = [
   }
 ]
 
-class BonusPage extends BackPageComponent {
+class BonusPage extends Component {
   static navigationOptions = {
     title: '分红',
     headerTintColor: '#FFFFFF',

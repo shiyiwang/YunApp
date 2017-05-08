@@ -13,11 +13,9 @@ import {
 
 import Iconfont from 'react-native-vector-icons/Iconfont';
 
-import BackPageComponent from '../../Common/BackPageComponent'
-
 const {width} = Dimensions.get('window');
 
-class MemberPage extends BackPageComponent {
+class MemberPage extends Component {
   static navigationOptions = {
     title: '会员',
     headerTintColor: '#FFFFFF',

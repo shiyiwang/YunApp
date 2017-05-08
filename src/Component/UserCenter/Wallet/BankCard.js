@@ -11,11 +11,9 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-import BackPageComponent from '../../Common/BackPageComponent'
-
 const {width} = Dimensions.get('window');
 
-class BankCard extends BackPageComponent {
+class BankCard extends Component {
   static navigationOptions = {
     title: '银行卡',
     headerStyle: {backgroundColor: '#fa7642'},

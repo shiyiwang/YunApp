@@ -10,8 +10,6 @@ import {
   Dimensions
 } from 'react-native'
 
-import BackPageComponent from '../../Common/BackPageComponent'
-
 const {width} = Dimensions.get('window');
 
 const data = [
@@ -35,7 +33,7 @@ const data = [
   }
 ]
 
-class FrozenPrice extends BackPageComponent {
+class FrozenPrice extends Component {
   static navigationOptions = {
     title: '冻结金额',
     headerTitleStyle: {color: '#FFFFFF'},
@@ -79,7 +77,7 @@ class FrozenPrice extends BackPageComponent {
       </View>
     )
   }
-  
+
 }
 
 const styles = StyleSheet.create({

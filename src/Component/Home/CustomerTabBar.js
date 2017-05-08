@@ -5,6 +5,7 @@ import {
   View,
   Image,
   TouchableOpacity,
+  Platform
 } from 'react-native';
 
 const CustomTabBar = React.createClass({
@@ -33,9 +34,11 @@ const CustomTabBar = React.createClass({
 const styles = StyleSheet.create({
   container: {
     marginTop: -5,
-    height: 35,
+    height: Platform.OS === 'ios' ? 35 : 42,
     flexDirection: 'row',
-    backgroundColor: '#f2f2f2'
+    backgroundColor: '#f2f2f2',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   tab: {
     flex: 1,
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: '#FF6700',
     flex: 1,
-    paddingTop: 10
+    paddingTop: Platform.OS === 'ios' ? 10 : 13
   },
   normal: {
     paddingLeft: 6,
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: '#f2f2f2',
     flex: 1,
-    paddingTop: 10
+    paddingTop: Platform.OS === 'ios' ? 10 : 13
   },
   font: {
     fontSize: 10

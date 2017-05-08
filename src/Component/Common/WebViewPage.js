@@ -9,12 +9,11 @@ import {
  ActivityIndicator,
  Dimensions
 } from 'react-native'
-import BackPageComponent from './BackPageComponent';
 import CommonLoading from './Loading'
 
 const {width, height} = Dimensions.get('window');
 
-export default class WebViewPage extends BackPageComponent{
+export default class WebViewPage extends Component{
   static navigationOptions = {
     header: null
   }

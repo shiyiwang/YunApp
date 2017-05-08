@@ -11,13 +11,12 @@ import {
   StatusBar
 } from 'react-native'
 
-import BackPageComponent from '../../Common/BackPageComponent'
 import SettingItem from '../../Common/SettingItem';
 import Button from '../../Common/Button';
 
 const {height} = Dimensions.get('window');
 
-class WalletPage extends BackPageComponent {
+class WalletPage extends Component {
   static navigationOptions = {
     title: '钱包',
     headerStyle: {backgroundColor: '#FF6700', shadowOpacity: 0},

@@ -10,7 +10,6 @@ import {
   Dimensions
 } from 'react-native'
 
-import BackPageComponent from '../../Common/BackPageComponent'
 import Button from '../../Common/Button'
 
 const {width} = Dimensions.get('window');
@@ -42,14 +41,14 @@ const data = [
   },
 ]
 
-class Score extends BackPageComponent {
+class Score extends Component {
   static navigationOptions = {
     title: '我的积分',
     headerStyle: {backgroundColor: '#5ba143', shadowOpacity: 0},
     headerTintColor: '#FFFFFF',
     headerRight: (<Button
       text="积分规则"
-      btnStyle={{backgroundColor: 'rgba(255,255,255,0)', height: 44, marginRight: 10}}
+      btnStyle={{backgroundColor: 'rgba(255,255,255,0)', height: 44, marginRight: 15}}
       textStyle={{color: '#FFFFFF', fontSize: 14}}
       onPress={() => console.log('btn click')}
     />)

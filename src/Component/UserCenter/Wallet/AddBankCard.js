@@ -10,13 +10,12 @@ import {
   Dimensions
 } from 'react-native'
 
-import BackPageComponent from '../../Common/BackPageComponent'
 import Button from '../../Common/Button'
 import SelectBankModal from '../../Common/SelectBankModal'
 
 const {width} = Dimensions.get('window');
 
-class AddBankCard extends BackPageComponent {
+class AddBankCard extends Component {
   static navigationOptions = {
     title: '添加银行卡',
     headerStyle: {backgroundColor: '#fa7642'},

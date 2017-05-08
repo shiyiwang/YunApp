@@ -8,9 +8,7 @@ import {
   Text
 } from 'react-native'
 
-import BackPageComponent from '../../Common/BackPageComponent'
-
-class OrderPage extends BackPageComponent {
+class OrderPage extends Component {
   static navigationOptions = {
     title: '预约'
   }
