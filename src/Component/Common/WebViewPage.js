@@ -26,6 +26,7 @@ export default class WebViewPage extends Component{
           style={styles.webView}
           javaScriptEnabled={true}
           scalesPageToFit={true}
+          automaticallyAdjustContentInsets={false}
         />
       </View>
     );

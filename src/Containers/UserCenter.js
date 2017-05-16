@@ -48,11 +48,11 @@ class UserCenter extends Component {
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Image
               style={styles.face}
-              source={{uri: 'http://static.yunipo.com/images/project/covers/20170316/58ca82cf30a62.jpg'}}
+              source={{uri: 'http://yunipo-10059392.file.myqcloud.com/avatar/20160824/GsDcfsbuKTcznUgi.png'}}
             />
             <Text style={styles.name}>龙哥</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.setButton}>
+          <TouchableOpacity style={styles.setButton} onPress={() => navigation.navigate('SettingPage')}>
             <Iconfont name="setting" size={24} color='#777777'></Iconfont>
           </TouchableOpacity>
         </View>
