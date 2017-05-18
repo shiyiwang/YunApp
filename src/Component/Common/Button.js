@@ -28,7 +28,7 @@ export default class Button extends Component{
       );
     }else if(Platform.OS === 'ios'){
       return(
-        <TouchableOpacity style={{flex: 1}}
+        <TouchableOpacity style={[styles.container, this.props.btnStyle]}
           activeOpacity={0.5}
           onPress={this.props.onPress}>
           {this._renderContent()}
@@ -39,7 +39,7 @@ export default class Button extends Component{
 
   _renderContent(){
     return(
-      <View style={[styles.container, this.props.btnStyle]}>
+      <View style={styles.textBox}>
         <Text style={[styles.text, this.props.textStyle]}>{this.props.text}</Text>
       </View>
     );
@@ -49,13 +49,15 @@ export default class Button extends Component{
 const styles = StyleSheet.create({
   container: {
     height: 40,
-    backgroundColor: '#FF6700',
+    backgroundColor: '#FF6700'
+  },
+  textBox: {
+    flex: 1,
     alignItems:'center',
     justifyContent:'center',
-    borderRadius: 3
   },
   text:{
-    color: 'white',
+    color: '#FFFFFF',
     fontSize: 14
   }
 });

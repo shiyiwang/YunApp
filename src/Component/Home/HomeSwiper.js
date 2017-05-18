@@ -3,7 +3,6 @@
  */
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -15,13 +14,16 @@ import {
 import Swiper from 'react-native-swiper';
 
 const {width} = Dimensions.get('window');
+
 class HomeSwiper extends Component {
   constructor(props){
     super(props)
   }
+
   static defaultProps = {
     data:[]
   };
+
   render() {
     return (
       <View>
@@ -49,18 +51,18 @@ class HomeSwiper extends Component {
           let itemData = Datas[i];
           imageViews.push(
             <View key={i}>
-              <TouchableOpacity onPress={this.goDetail.bind(this,itemData.id)}>
+              <TouchableOpacity activeOpacity={0.5} onPress={this.goDetail.bind(this,itemData.product_id)}>
                 <View style={styles.container}>
                   <View style={styles.imageBox}>
                     <Image
                       style={styles.bgImage}
-                      source={{uri:itemData.image}}
+                      source={{uri:itemData.main_img_url.replace('/static', 'http://static.yunipo.com')}}
                     />
                   </View>
                   <View style={styles.fontBox}>
-                    <Text style={styles.title}>{itemData.title}</Text>
+                    <Text style={styles.title}>{itemData.product_name}</Text>
                     <View style={styles.descBox}>
-                      <Text style={styles.desc}>{itemData.desc}</Text>
+                      <Text style={styles.desc}>{itemData.slogan}</Text>
                     </View>
                   </View>
                 </View>
@@ -79,8 +81,8 @@ class HomeSwiper extends Component {
 
 const styles = StyleSheet.create({
   container: {
-      width: width,
-      height: 200
+    width: width,
+    height: 200
   },
   imageBox: {
     position: 'absolute',

@@ -19,7 +19,7 @@ const {height} = Dimensions.get('window');
 class WalletPage extends Component {
   static navigationOptions = {
     title: '钱包',
-    headerStyle: {backgroundColor: '#FF6700', shadowOpacity: 0},
+    headerStyle: {backgroundColor: '#FF6700', shadowOpacity: 0, elevation: 0},
     headerTintColor: '#FFFFFF'
   }
 

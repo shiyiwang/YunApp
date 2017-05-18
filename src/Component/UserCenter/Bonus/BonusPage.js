@@ -40,7 +40,7 @@ class BonusPage extends Component {
   static navigationOptions = {
     title: '分红',
     headerTintColor: '#FFFFFF',
-    headerStyle: {backgroundColor: '#d64e4b', shadowOpacity: 0}
+    headerStyle: {backgroundColor: '#d64e4b', shadowOpacity: 0, elevation: 0}
   }
 
   componentWillMount() {

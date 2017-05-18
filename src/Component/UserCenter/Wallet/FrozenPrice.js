@@ -37,7 +37,7 @@ class FrozenPrice extends Component {
   static navigationOptions = {
     title: '冻结金额',
     headerTitleStyle: {color: '#FFFFFF'},
-    headerStyle: {backgroundColor: '#3d9fa0', shadowOpacity: 0},
+    headerStyle: {backgroundColor: '#3d9fa0', shadowOpacity: 0, elevation: 0},
     headerTintColor: '#FFFFFF'
   }
 

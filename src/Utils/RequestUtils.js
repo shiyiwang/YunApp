@@ -1,21 +1,22 @@
 export const request = (url, method, body) => {
-  let isOk;
   return new Promise((resolve, reject) => {
     fetch(url, {
       method,
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Content-Type': 'application/json;charset=utf-8',
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
       },
       body
     })
-      .then((response) => {
-        return response.json();
-      })
-      .then((responseData) => {
-        resolve(responseData);
-      })
-      .catch((error) => {
-        reject(error);
-      });
+    .then((response) => {
+      return response.json();
+    })
+    .then((responseData) => {
+      resolve(responseData);
+    })
+    .catch((error) => {
+      reject(error);
+    });
   });
 };

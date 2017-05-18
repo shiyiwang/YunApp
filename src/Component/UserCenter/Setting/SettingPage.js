@@ -19,7 +19,7 @@ const {width} = Dimensions.get('window');
 class SettingPage extends Component {
   static navigationOptions = {
     title: '设置',
-    headerStyle: {backgroundColor: '#FF6700', shadowOpacity: 0},
+    headerStyle: {backgroundColor: '#FF6700', shadowOpacity: 0, elevation: 0},
     headerTintColor: '#FFFFFF'
   }
 

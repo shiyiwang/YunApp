@@ -2,15 +2,14 @@ import {
   StackNavigator,
   TabNavigator,
   TabBarBottom,
-  addNavigationHelpers,
-  NavigationActions,
 } from 'react-navigation'
 
 import Home from '../Containers/Home'
 import Touhou from '../Containers/Touhou'
 import BigBomb from '../Containers/BigBomb'
 import UserCenter from '../Containers/UserCenter'
-import RootLogin from '../Containers/Login'
+import Login from '../Containers/Login'
+import ForgetPassPage from '../Component/Login/ForgetPassPage'
 import SettingPage from '../Component/UserCenter/Setting/SettingPage'
 import WalletPage from '../Component/UserCenter/Wallet/WalletPage'
 import FrozenPrice from '../Component/UserCenter/Wallet/FrozenPrice'
@@ -74,15 +73,30 @@ const MainNavigator = StackNavigator(
     MessagePage: {screen: MessagePage},
     SettingPage: {screen: SettingPage},
     WebViewPage: {screen: WebViewPage},
+    ForgetPass: { screen: ForgetPassPage}
   }, {
 	mode: 'card',
 	headerMode: 'screen'
 });
 
+const LoginNavigator = StackNavigator(
+  {
+    Login: {
+      screen: Login,
+      navigationOptions: {
+        header: null
+      }
+    },
+    ForgetPass: { screen: ForgetPassPage}
+  }, {
+  mode: 'card',
+  headerMode: 'screen'
+})
+
 const AppNavigator = StackNavigator(
   {
     Main: { screen: MainNavigator },
-    Login: { screen: RootLogin },
+    Login: { screen: LoginNavigator },
   },
   {
     headerMode: 'none',

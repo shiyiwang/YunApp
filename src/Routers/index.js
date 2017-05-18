@@ -7,6 +7,7 @@ import {
 import { connect } from 'dva'
 
 import AppNavigator from './AppNavigator'
+import ToastUtils from '../Utils/ToastUtils'
 
 function getCurrentScreen(navigationState) {
   if (!navigationState) {
@@ -30,14 +31,18 @@ class Router extends PureComponent {
 
   backHandle = () => {
     const currentScreen = getCurrentScreen(this.props.router)
-    if (currentScreen === 'Login') {
-      return true
+
+    if (currentScreen === 'Home') {
+      if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
+        return false
+      }
+      ToastUtils.showShort('再按一次退出应用')
+      this.lastBackPressed = Date.now()
+      return true;
     }
-    if (currentScreen !== 'Main') {
-      this.props.dispatch(NavigationActions.back())
-      return true
-    }
-    return false
+
+    this.props.dispatch(NavigationActions.back())
+    return true
   }
 
   render() {

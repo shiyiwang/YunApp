@@ -12,6 +12,8 @@ import {
   StyleSheet
 } from 'react-native';
 
+import { connect } from 'dva'
+
 //轮播图
 import HomeSwiper from '../Component/Home/HomeSwiper';
 //产品列表
@@ -19,7 +21,9 @@ import HomeScrollList from '../Component/Home/HomeScrollList';
 //加载动图
 import CommonLoading from '../Component/Common/Loading';
 
-class Home extends Component {
+import { createAction, NavigationActions } from '../Utils'
+
+class HomeClass extends Component {
   static navigationOptions = {
     tabBarLabel: '推荐',
     tabBarIcon: ({tintColor}) => (
@@ -40,54 +44,34 @@ class Home extends Component {
   }
 
   _onRefresh() {
-    this.setState({refreshing: true});
+    this.props.dispatch(createAction('home/getProducts')())
+    this.setState({refreshing: this.props.fetchingProduct});
   }
 
   render() {
     return (
-      <ScrollView
-        style={{backgroundColor: '#FFFFFF'}}
-        refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-          />
-        }
+      <View
+        style={{flex: 1, backgroundColor: '#FFFFFF'}}
       >
           {/*轮播图*/}
           {this.renderHomeSwiper()}
           {/*产品列表*/}
           {this.renderHomeScrollList()}
-      </ScrollView>
+      </View>
     );
   }
 
   componentDidMount(){
       // 请求首页数据
-      this.getData()
-  }
-
-  getData(){
-    let swiperData  = [
-      {id: 1, title: '双子星-飞幻', desc: '超IMAX体验的飞行影院+百度战略投资的文学IP泛娱乐生态平台', image: 'http://static.yunipo.com/images/project/covers/20170405/58e495d386777.jpg'},
-      {id: 2, title: '留洋帮（深圳）家长股东投资计划', desc: '国内股权投资，国外留学受益', image: 'http://static.yunipo.com/images/project/covers/20170316/58ca82cf30a62.jpg'},
-      {id: 3, title: '超新星 - 锋飞', desc: '全球首款采用RTK技术的燃油直驱多旋翼无人机', image: 'http://static.yunipo.com/images/project/covers/20170321/58d09dc370bec.jpg'},
-      {id: 4, title: '全美基因（香港）', desc: '基因诊疗技术专家，大幅提升生命质量', image: 'http://static.yunipo.com/images/project/covers/20170306/58bd2f3149f79.jpg'}
-    ];
-    let scrollListData = [
-      1
-    ]
-    this.setState({
-        swiperData: swiperData,
-        scrollListData: scrollListData
-    })
+      this.props.dispatch(createAction('home/getAd')())
+      this.props.dispatch(createAction('home/getProducts')())
   }
 
   renderHomeSwiper(){
-    if(this.state.swiperData.length){
+    if(!this.props.fetchingAd){
       return (
         <HomeSwiper
-          data = {this.state.swiperData}
+          data = {this.props.indexAd}
         />
       )
     }else{
@@ -98,10 +82,10 @@ class Home extends Component {
   }
 
   renderHomeScrollList() {
-    if(this.state.scrollListData.length > 0){
+    if(!this.props.fetchingProduct){
       return (
         <HomeScrollList
-          data = {this.state.scrollListData}
+          data = {this.props.productList}
         />
       )
     }else{
@@ -121,4 +105,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home;
+function mapState (state) {
+  return ({ home }) => ({ ...home })
+}
+
+const Home = connect(mapState)(HomeClass);
+
+export default Home

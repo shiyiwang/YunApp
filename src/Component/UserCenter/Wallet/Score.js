@@ -7,7 +7,8 @@ import {
   StyleSheet,
   Text,
   ListView,
-  Dimensions
+  Dimensions,
+  Platform
 } from 'react-native'
 
 import Button from '../../Common/Button'
@@ -44,7 +45,7 @@ const data = [
 class Score extends Component {
   static navigationOptions = {
     title: '我的积分',
-    headerStyle: {backgroundColor: '#5ba143', shadowOpacity: 0},
+    headerStyle: {backgroundColor: '#5ba143', shadowOpacity: 0, elevation: 0},
     headerTintColor: '#FFFFFF',
     headerRight: (<Button
       text="积分规则"
@@ -120,10 +121,10 @@ const styles = StyleSheet.create({
     color: '#FFFFFF'
   },
   score: {
-    fontSize: 38,
+    fontSize: 40,
+    height: 45,
     color: '#FFFFFF',
     marginBottom: 15,
-    marginTop: 5
   },
   scoreRuleBtn: {
     position: 'absolute',
