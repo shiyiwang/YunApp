@@ -26,7 +26,7 @@ class MemberPage extends Component {
     super()
     this.state = {
       grade: 2,
-      lineWidth: 175
+      lineWidth: 200
     }
   }
 

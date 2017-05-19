@@ -44,6 +44,7 @@ export default {
     *getProducts({ payload }, { call, put, select}) {
       yield put(createAction('fetchProductsStart')())
       const ad = yield call(homeService.getHomeProducts, payload)
+      console.log(ad);
       let data = []
       if (ad.status === 1) {
         data = ad.data

@@ -94,12 +94,14 @@ class LoginComponent extends Component {
               <Text style={{fontSize: 14, color: '#666666'}}>忘记密码？</Text>
             </TouchableOpacity>
           </View>
-          <Button
-            text="登录"
-            btnStyle={{marginTop: 20}}
-            textStyle={{fontSize: 16}}
-            onPress={this.login.bind(this)}
-          />
+          <View style={{}}>
+            <Button
+              text="登录"
+              btnStyle={{marginTop: 20}}
+              textStyle={{fontSize: 16}}
+              onPress={this.login.bind(this)}
+            />
+          </View>
         </View>
         <View style={styles.otherLoginBox}>
           <View style={styles.boxLine}></View>

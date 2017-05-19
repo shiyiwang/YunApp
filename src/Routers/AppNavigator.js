@@ -24,6 +24,7 @@ import InvestPage from '../Component/UserCenter/Invest/InvestPage'
 import BonusPage from '../Component/UserCenter/Bonus/BonusPage'
 import MessagePage from '../Component/UserCenter/Message/MessagePage'
 import WebViewPage from '../Component/Common/WebViewPage'
+import ProjectDetailPage from '../Component/Home/ProjectDetailPage'
 
 const HomeNavigator = TabNavigator({
   Home: {screen: Home},
@@ -73,7 +74,8 @@ const MainNavigator = StackNavigator(
     MessagePage: {screen: MessagePage},
     SettingPage: {screen: SettingPage},
     WebViewPage: {screen: WebViewPage},
-    ForgetPass: { screen: ForgetPassPage}
+    ForgetPass: { screen: ForgetPassPage},
+    ProjectDetailPage: { screen: ProjectDetailPage}
   }, {
 	mode: 'card',
 	headerMode: 'screen'

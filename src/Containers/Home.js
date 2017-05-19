@@ -72,6 +72,7 @@ class HomeClass extends Component {
       return (
         <HomeSwiper
           data = {this.props.indexAd}
+          navigation={this.props.navigation}
         />
       )
     }else{

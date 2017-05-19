@@ -74,7 +74,7 @@ class HomeSwiper extends Component {
   }
 
   goDetail(id){
-    console.log(id);
+    this.props.navigation.navigate('ProjectDetailPage')
   }
 
 }

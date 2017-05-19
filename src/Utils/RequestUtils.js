@@ -7,7 +7,9 @@ export const request = (url, method, body) => {
         'Accept': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
       },
-      body
+      body: JSON.stringify(
+        body
+      )
     })
     .then((response) => {
       return response.json();
