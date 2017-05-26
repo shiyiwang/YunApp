@@ -8,6 +8,7 @@ import {
   ListView,
   Image,
   Text,
+  TouchableOpacity,
   Dimensions
 } from 'react-native'
 
@@ -20,10 +21,14 @@ class ScrollListItem extends Component {
 
   constructor(props) {
     super(props);
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(this.props.data),
     };
+  }
+
+  goDetail(product_type, product_id){
+    this.props.navigation.navigate('ProjectDetailPage', {product_type, product_id})
   }
 
   render(){
@@ -33,6 +38,8 @@ class ScrollListItem extends Component {
           style={styles.msgBox}
           dataSource={this.state.dataSource}
           renderRow={this._renderRow.bind(this)}
+          enableEmptySections={true}
+          initialListSize={5}
         />
       </View>
     )
@@ -40,26 +47,28 @@ class ScrollListItem extends Component {
 
   _renderRow(rowData) {
     return (
-      <View style={styles.contentItem}>
-        <View style={styles.imgBox}>
-          <Image
-            source={{uri: rowData.main_img_url.replace('/static', 'http://static.yunipo.com')}}
-            style={{width: 108, height: 60}}
-          />
-        </View>
-        <View style={styles.infoBox}>
-          <Text style={styles.infoTitle}>{rowData.product_name}</Text>
-          <View style={styles.infoDescBox}>
-            <Text style={styles.infoDesc}>目标：{(rowData.product_money/10000).toFixed(0)}万</Text>
-            {
-              rowData.product_type === 'prepare' ?
-                <Text style={styles.infoDesc}></Text>
-                :
-                <Text style={styles.infoDesc}>进度：{rowData.product_progress}%{this._renderResult(rowData.product_type)}</Text>
-            }
+      <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this,rowData.product_type, rowData.product_id)}>
+        <View style={styles.contentItem}>
+          <View style={styles.imgBox}>
+            <Image
+              source={{uri: rowData.main_img_url.startsWith('/static') ? rowData.main_img_url.replace('/static', 'http://static.yunipo.com') : rowData.main_img_url}}
+              style={{width: 108, height: 60}}
+            />
+          </View>
+          <View style={styles.infoBox}>
+            <Text style={styles.infoTitle}>{rowData.product_name}</Text>
+            <View style={styles.infoDescBox}>
+              <Text style={styles.infoDesc}>目标：{(rowData.product_money/10000).toFixed(0)}万</Text>
+              {
+                rowData.type === 'prepare' ?
+                  <Text style={styles.infoDesc}></Text>
+                  :
+                  <Text style={styles.infoDesc}>进度：{rowData.product_progress}%{this._renderResult(rowData.type)}</Text>
+              }
+            </View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 

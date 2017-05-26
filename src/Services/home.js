@@ -11,3 +11,9 @@ export const getHomeProducts = async () => {
 
   return result;
 }
+
+export const getHomeProductById = async (body) => {
+  const result = request('http://m.yunipo.com/test/homeProductDetail', 'POST', body)
+
+  return result;
+}

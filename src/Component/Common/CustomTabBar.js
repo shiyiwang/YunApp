@@ -20,7 +20,7 @@ const CustomTabBar = React.createClass({
           this.props.tabs.map((tab, i) => {
             const isActive = this.props.activeTab === i
             return (
-              <TouchableOpacity activeOpacity={0.5} key={tab} onPress={() => this.props.goToPage(i)}>
+              <TouchableOpacity style={this.props.touchableStyle} activeOpacity={0.5} key={tab} onPress={() => this.props.goToPage(i)}>
                 <View style={[styles.tab, isActive ? {borderBottomColor: '#FF6700'} : {}]}>
                   <Text style={[styles.font, isActive ? {color: '#FF6700'} : {}]}>{tab}</Text>
                 </View>

@@ -46,7 +46,7 @@ class UserCenterClass extends Component {
     return (
      <ScrollView style={styles.container}>
        <View style={styles.header}>
-         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+         <TouchableOpacity onPress={() => navigation.navigate('LoginNavigator')}>
            <Image
              style={styles.face}
              source={{uri: 'http://yunipo-10059392.file.myqcloud.com/avatar/20160824/GsDcfsbuKTcznUgi.png'}}
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
 });
 
 function mapState (state) {
-  return ({ home }) => ({ ...home })
+  return ({ app }) => ({ ...app })
 }
 
 const UserCenter = connect(mapState)(UserCenterClass);

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { BackAndroid } from 'react-native'
+import { BackHandler } from 'react-native'
 import {
   addNavigationHelpers,
   NavigationActions,
@@ -22,11 +22,11 @@ function getCurrentScreen(navigationState) {
 
 class Router extends PureComponent {
   componentWillMount() {
-    BackAndroid.addEventListener('hardwareBackPress', this.backHandle)
+    BackHandler.addEventListener('hardwareBackPress', this.backHandle)
   }
 
   componentWillUnmount() {
-    BackAndroid.removeEventListener('hardwareBackPress', this.backHandle)
+    BackHandler.removeEventListener('hardwareBackPress', this.backHandle)
   }
 
   backHandle = () => {

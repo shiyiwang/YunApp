@@ -45,7 +45,7 @@ class HomeClass extends Component {
 
   _onRefresh() {
     this.props.dispatch(createAction('home/getProducts')())
-    this.setState({refreshing: this.props.fetchingProduct});
+    this.setState({refreshing: this.props.fetchingProducts});
   }
 
   render() {
@@ -72,7 +72,7 @@ class HomeClass extends Component {
       return (
         <HomeSwiper
           data = {this.props.indexAd}
-          navigation={this.props.navigation}
+          {...this.props}
         />
       )
     }else{
@@ -83,10 +83,11 @@ class HomeClass extends Component {
   }
 
   renderHomeScrollList() {
-    if(!this.props.fetchingProduct){
+    if(!this.props.fetchingProducts){
       return (
         <HomeScrollList
           data = {this.props.productList}
+          {...this.props}
         />
       )
     }else{

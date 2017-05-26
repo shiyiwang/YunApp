@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  View,
+  View
 } from 'react-native';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -17,39 +17,39 @@ class HomeScrollList extends Component {
     super(props)
   }
 
-  static defaultProps = {
-    data:[]
-  };
-
   render() {
     return (
       <ScrollableTabView
-        initialPage={0}
         renderTabBar={() => <CustomTabBar />}
         >
         <View tabLabel="全部" style={styles.tabView}>
           <ScrollListItem
-            data={this.props.data}
+            data = {this.props.data}
+            navigation = {this.props.navigation}
             />
         </View>
         <View tabLabel="预热中" style={styles.tabView}>
           <ScrollListItem
-            data={this.props.data.filter((item) => {return item.product_type === 'prepare'})}
+            data = {this.props.data.filter((item) => {return item.type === 'prepare'})}
+            navigation = {this.props.navigation}
             />
         </View>
         <View tabLabel="发售中" style={styles.tabView}>
           <ScrollListItem
-            data={this.props.data.filter((item) => {return item.product_type === 'selling'})}
+            data = {this.props.data.filter((item) => {return item.type === 'selling'})}
+            navigation = {this.props.navigation}
             />
         </View>
         <View tabLabel="已售罄" style={styles.tabView}>
           <ScrollListItem
-            data={this.props.data.filter((item) => {return item.product_type === 'sellout'})}
+            data = {this.props.data.filter((item) => {return item.type === 'sellout'})}
+            navigation = {this.props.navigation}
             />
         </View>
         <View tabLabel="已截止" style={styles.tabView}>
           <ScrollListItem
-            data={this.props.data.filter((item) => {return item.product_type === 'sellend'})}
+            data = {this.props.data.filter((item) => {return item.type === 'sellend'})}
+            navigation = {this.props.navigation}
             />
         </View>
       </ScrollableTabView>

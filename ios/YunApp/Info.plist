@@ -20,6 +20,19 @@
     <string>0.1</string>
     <key>CFBundleSignature</key>
     <string>????</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLName</key>
+        <string>wexin</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>wxd9c1e8bf4a96e7a7</string>
+        </array>
+      </dict>
+    </array>
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>LSRequiresIPhoneOS</key>
@@ -68,5 +81,10 @@
     </array>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>weixin</string>
+      <string>wechat</string>
+    </array>
   </dict>
 </plist>

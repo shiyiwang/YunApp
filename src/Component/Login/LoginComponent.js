@@ -15,6 +15,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Kohana } from 'react-native-textinput-effects';
 import Button from '../Common/Button';
 
+import MD5 from 'crypto-js/md5'
+
+import { createAction, NavigationActions } from '../../Utils'
+
 const {width} = Dimensions.get('window');
 
 class LoginComponent extends Component {
@@ -27,26 +31,14 @@ class LoginComponent extends Component {
   }
 
   login() {
-    fetch('https://www.yunipo.com/weixin/index', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      },
-      body: JSON.stringify({
-        user_name: this.state.user_name,
-        password: this.state.password,
-        action: 'login'
-      })
-    })
-    .then((response) => response.json())
-    .then((json) => {
-      AlertIOS.alert('提示信息', json.info);
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+    const data = {
+      'user_name': this.state.user_name,
+      'password': this.state.password,
+      'ip': '127.0.0.1',
+      'agent': 'app'
+    }
+
+    this.props.dispatch(createAction('app/login')(data))
   }
 
   wechatLogin() {

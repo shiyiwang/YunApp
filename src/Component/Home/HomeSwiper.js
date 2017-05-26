@@ -12,12 +12,16 @@ import {
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
+import { NavigationActions } from 'react-navigation'
 
 const {width} = Dimensions.get('window');
 
 class HomeSwiper extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      test: 1
+    }
   }
 
   static defaultProps = {
@@ -51,7 +55,7 @@ class HomeSwiper extends Component {
           let itemData = Datas[i];
           imageViews.push(
             <View key={i}>
-              <TouchableOpacity activeOpacity={0.5} onPress={this.goDetail.bind(this,itemData.product_id)}>
+              <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this,itemData.product_type, itemData.product_id)}>
                 <View style={styles.container}>
                   <View style={styles.imageBox}>
                     <Image
@@ -73,8 +77,8 @@ class HomeSwiper extends Component {
       return imageViews;
   }
 
-  goDetail(id){
-    this.props.navigation.navigate('ProjectDetailPage')
+  goDetail(product_type, product_id){
+    this.props.navigation.navigate('ProjectDetailPage', {product_type, product_id})
   }
 
 }

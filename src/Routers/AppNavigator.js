@@ -9,6 +9,7 @@ import Touhou from '../Containers/Touhou'
 import BigBomb from '../Containers/BigBomb'
 import UserCenter from '../Containers/UserCenter'
 import Login from '../Containers/Login'
+import ProjectDetailPage from '../Containers/ProjectDetailPage'
 import ForgetPassPage from '../Component/Login/ForgetPassPage'
 import SettingPage from '../Component/UserCenter/Setting/SettingPage'
 import WalletPage from '../Component/UserCenter/Wallet/WalletPage'
@@ -24,7 +25,7 @@ import InvestPage from '../Component/UserCenter/Invest/InvestPage'
 import BonusPage from '../Component/UserCenter/Bonus/BonusPage'
 import MessagePage from '../Component/UserCenter/Message/MessagePage'
 import WebViewPage from '../Component/Common/WebViewPage'
-import ProjectDetailPage from '../Component/Home/ProjectDetailPage'
+
 
 const HomeNavigator = TabNavigator({
   Home: {screen: Home},
@@ -98,7 +99,7 @@ const LoginNavigator = StackNavigator(
 const AppNavigator = StackNavigator(
   {
     Main: { screen: MainNavigator },
-    Login: { screen: LoginNavigator },
+    LoginNavigator: { screen: LoginNavigator },
   },
   {
     headerMode: 'none',

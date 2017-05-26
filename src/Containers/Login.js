@@ -48,7 +48,7 @@ class LoginClass extends Component {
           renderTabBar={() => <CustomTabBar />}
           >
           <View tabLabel="登录" style={styles.tabView}>
-            <LoginComponent navigation={this.props.navigation} />
+            <LoginComponent {...this.props} />
           </View>
           <View tabLabel="注册" style={styles.tabView}>
             <RegComponent />

@@ -1,6 +1,7 @@
-import { delay } from '../Utils'
+import { request } from '../Utils/RequestUtils'
 
-export const login = async () => {
-  await delay(2000)
-  return true
+export const login = async (payload) => {
+  const result = request('http://wangshiyi.yunipo.com/apps/login', 'POST', payload)
+
+  return result;
 }

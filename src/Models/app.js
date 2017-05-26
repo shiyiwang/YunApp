@@ -1,5 +1,6 @@
 import { createAction, NavigationActions } from '../Utils'
 import * as authService from '../Services/auth'
+import ToastUtils from '../Utils/ToastUtils'
 
 export default {
   namespace: 'app',
@@ -19,14 +20,18 @@ export default {
     *login({ payload }, { call, put }) {
       yield put(createAction('loginStart')())
       const login = yield call(authService.login, payload)
-      if (login) {
+      
+      if (login.status === 0) {
+        ToastUtils.showShort(login.info)
+      }else {
         yield put(
           NavigationActions.reset({
             index: 0,
             actions: [NavigationActions.navigate({ routeName: 'Main' })],
-          }),
+          })
         )
       }
+
       yield put(createAction('loginEnd')({ login }))
     },
   },
