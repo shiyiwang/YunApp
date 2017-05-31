@@ -29,8 +29,8 @@ class ProjectsListItem extends Component {
     };
   }
 
-  goDetail(product_type, product_id){
-    // this.props.navigation.navigate('ProjectDetailPage', {product_type, product_id})
+  goDetail(title, project_id){
+    this.props.navigation.navigate('WebViewPage', {title: title, url: 'http://m.yunipo.com/touhou/prodetail?id=' + project_id})
   }
 
   render(){
@@ -51,7 +51,7 @@ class ProjectsListItem extends Component {
     return (
         <View style={styles.contentItem}>
           <View style={styles.imgBox}>
-            <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this,rowData.project_id)}>
+            <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this, rowData.project_name, rowData.project_id)}>
               <Image
                 source={{uri: rowData.project_logo_url}}
                 style={{width: 50, height: 50, borderWidth: 1,borderColor: '#EEEEEE', borderRadius: 25}}
@@ -59,7 +59,7 @@ class ProjectsListItem extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.infoBox}>
-            <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this,rowData.project_id)}>
+            <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this, rowData.project_name, rowData.project_id)}>
               <Text style={styles.infoTitle}>{rowData.project_name}</Text>
             </TouchableOpacity>
             <Text style={[styles.infoDesc, {paddingTop: 6}]} numberOfLines={1}>{rowData.slogan}</Text>

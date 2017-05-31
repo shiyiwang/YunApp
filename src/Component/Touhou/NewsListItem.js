@@ -13,6 +13,7 @@ import {
 } from 'react-native'
 
 import { formatDateString } from '../../Utils/FormatUtils'
+import { createAction, NavigationActions } from '../../Utils'
 
 const {width} = Dimensions.get('window')
 
@@ -26,11 +27,23 @@ class NewsListItem extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(this.props.data),
+      newsPage: 1
     };
   }
 
-  goDetail(product_type, product_id){
-    // this.props.navigation.navigate('ProjectDetailPage', {product_type, product_id})
+  goDetail(title, project_id){
+    this.props.navigation.navigate('WebViewPage', {title: title, url: 'http://m.yunipo.com/touhou/prodetail?id=' + project_id})
+  }
+
+  goNewsWebPage(title, id) {
+    this.props.navigation.navigate('WebViewPage', {title: title, url: 'http://news.yunipo.com/wp/article/' + id})
+  }
+
+  loadMore() {
+    this.props.dispatch(createAction('touhou/loadMoreNews')({information_type: '1,2,98,99', list_rows: 5, page: this.state.newsPage}))
+    this.setState({newsPage: this.state.newsPage + 1})
+    console.log('into loadMore')
+    console.log(this.state.newsPage)
   }
 
   render(){
@@ -42,6 +55,8 @@ class NewsListItem extends Component {
           renderRow={this._renderRow.bind(this)}
           enableEmptySections={true}
           initialListSize={5}
+          onEndReachedThreshold={10}
+          onEndReached={this.loadMore.bind(this)}
         />
       </View>
     )
@@ -51,15 +66,15 @@ class NewsListItem extends Component {
     return (
         <View style={styles.contentItem}>
           <View style={styles.imgBox}>
-            <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this,rowData.project_id)}>
+            <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this, rowData.project_name, rowData.project_id)}>
               <Image
-                source={{uri: rowData.project_logo_url}}
+                source={{uri: rowData.project_logo_url.startsWith("//") ? "http:" + rowData.project_logo_url : rowData.project_logo_url}}
                 style={{width: 50, height: 50, borderWidth: 1,borderColor: '#EEEEEE', borderRadius: 4}}
               />
             </TouchableOpacity>
           </View>
           <View style={styles.infoBox}>
-            <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this,rowData.project_id)}>
+            <TouchableOpacity activeOpacity={0.9} onPress={this.goDetail.bind(this, rowData.project_name, rowData.project_id)}>
               <Text style={styles.infoTitle}>{rowData.project_name}<Text style={styles.infoTitleSpan}>  的{this._renderNewsType(rowData.information_type)}</Text></Text>
             </TouchableOpacity>
             <View style={styles.infoDescBox}>
@@ -74,7 +89,10 @@ class NewsListItem extends Component {
   _renderNewsFooter(news) {
     if (news.project_id !== '154') {
       return (
-        <Text style={styles.timeText}>{news.plan_name_list.map((item) => item.plan_name).join(',').toString()} · {formatDateString(news.release_time)}</Text>
+        <View style={{flexDirection: 'row'}}>
+          <Text style={[styles.timeText, {maxWidth: 0.6 * width}]} numberOfLines={1}>{news.plan_name_list.map((item) => item.plan_name).join(',').toString()}</Text>
+          <Text style={styles.timeText} numberOfLines={1}>{(news.plan_name_list.length > 0 ? ' · ' : '') + formatDateString(news.release_time)}</Text>
+        </View>
       )
     }
   }
@@ -82,20 +100,20 @@ class NewsListItem extends Component {
   _renderNewsContent(news) {
     if (news.information_type === '1') {
       return (
-        <TouchableOpacity activeOpacity={0.5}>
+        <TouchableOpacity activeOpacity={0.5} onPress={this.goNewsWebPage.bind(this, news.data_title, news.data_id)}>
           <Text style={styles.infoDesc} numberOfLines={2}>{news.data_title}</Text>
         </TouchableOpacity>
       )
     }else if (news.information_type === '2') {
       return (
-        <TouchableOpacity activeOpacity={0.5}>
+        <TouchableOpacity activeOpacity={0.5} onPress={this.goNewsWebPage.bind(this, news.data_title, news.data_id)}>
             <Text style={styles.infoDesc} numberOfLines={news.is_investor === '1' ? 2 : 1}>{news.data_title}</Text>
             {news.is_investor === '1' ? '' : <Text style={styles.infoRowTitle}>（仅限已投资该项目的投资人查看！)</Text>}
         </TouchableOpacity>
       )
     }else if (news.information_type === '98') {
       return (
-        <TouchableOpacity activeOpacity={0.5}>
+        <TouchableOpacity activeOpacity={0.5} onPress={news.is_investor === '1' ? this.goNewsWebPage.bind(this, news.data_title, news.file_info.visit_path) : undefined}>
             <Text style={styles.infoDesc} numberOfLines={news.is_investor === '1' ? 2 : 1}>{news.data_title}</Text>
             {news.is_investor === '1' ? '' : <Text style={styles.infoRowTitle}>（仅限已投资该项目的投资人查看！)</Text>}
         </TouchableOpacity>

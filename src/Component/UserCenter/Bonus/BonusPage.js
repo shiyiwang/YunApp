@@ -75,7 +75,7 @@ class BonusPage extends Component {
             <Text style={styles.itemPrice}>+{item.price}</Text>
             <TouchableOpacity
               activeOpacity={0.5}
-              onPress={() => this.props.navigation.navigate('WebViewPage')}>
+              onPress={() => this.props.navigation.navigate('WebViewPage', {title: '分红'})}>
               <View style={styles.shareIcon}>
                 <Iconfont name="share" size={18} color='#999999'></Iconfont>
               </View>

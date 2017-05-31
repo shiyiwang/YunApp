@@ -66,7 +66,7 @@ class TouhouClass extends Component {
               this.props.fetchingNews ?
                 <CommonLoading />
               :
-                <NewsListItem data={this.props.news}/>
+                <NewsListItem data={this.props.news} navigation={this.props.navigation} dispatch={this.props.dispatch}/>
             }
           </View>
           <View tabLabel="项目" style={styles.tabView}>
@@ -74,7 +74,7 @@ class TouhouClass extends Component {
               this.props.fetchingProjects ?
                 <CommonLoading />
               :
-                <ProjectsListItem data={this.props.projects}/>
+                <ProjectsListItem data={this.props.projects} navigation={this.props.navigation}/>
             }
           </View>
         </ScrollableTabView>
